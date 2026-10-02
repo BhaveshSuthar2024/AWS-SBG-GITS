@@ -1,0 +1,64 @@
+.list {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  background: var(--bg-primary);
+}
+
+.item-wrapper {
+  position: absolute;
+  will-change: transform, width, height, opacity;
+  padding: 6px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  /* margin-bottom: 30px; */
+}
+
+.item-wrapper > .item-img {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-section {
+  padding: 8rem 0 2rem 0;
+  position: relative;
+  background: var(--bg-primary);
+}
+
+.gallery-header {
+  max-width: 900px;
+  margin: 0 auto 5rem;
+  text-align: center;
+}
+
+.gallery-title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.gallery-subtitle {
+  max-width: 700px;
+  margin: 2rem auto 0;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+.gallery-divider {
+  width: 140px;
+  height: 2px;
+  margin: 2.5rem auto 0;
+  background: linear-gradient(90deg, transparent, #ff9900, transparent);
+}

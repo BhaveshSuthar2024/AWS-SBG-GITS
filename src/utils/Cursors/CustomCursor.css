@@ -1,0 +1,73 @@
+/* Custom Cursor Styles */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate3d(-50%, -50%, 0);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+/* Precise Center Dot */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.cursor-dot.hovered {
+  width: 0px;
+  height: 0px;
+  background-color: var(--accent-secondary);
+}
+
+.cursor-dot.clicked {
+  transform: translate3d(-50%, -50%, 0) scale(0.5);
+}
+
+/* Outer Glowing Ring */
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(var(--accent-primary-rgb), 0.1);
+  transition: 
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cursor-ring.hovered {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(var(--accent-primary-rgb), 0.05);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.3);
+}
+
+.cursor-ring.clicked {
+  width: 26px;
+  height: 26px;
+  background-color: rgba(var(--accent-primary-rgb), 0.15);
+  border-color: var(--accent-secondary);
+}
+
+/* Disable custom cursor on touch devices */
+@media (max-width: 768px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: auto !important;
+  }
+}
