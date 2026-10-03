@@ -13,7 +13,9 @@ import CustomCursor from "./utils/Cursors/CustomCursor";
 import "./portfolio-theme.css";
 
 const GalleryPage = lazy(() => import("./components/GalleryPage"));
-const CommunityDayPage = lazy(() => import("./components/Communitydaypage"));
+const CommunityDayPage = lazy(
+  () => import("./utils/CommunityDayPageRedesign/components/CommunityDayPage"),
+);
 
 function scrollToHash(hash) {
   const id = hash.replace("#", "");
@@ -116,7 +118,7 @@ function AppShell() {
 
   return (
     <>
-      <CustomCursor />
+      {!isCommunityDay && <CustomCursor />}
 
       {!isCommunityDay && <Navbar />}
       <Suspense
