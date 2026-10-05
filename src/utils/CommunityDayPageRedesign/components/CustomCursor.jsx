@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import './CustomCursor.css';
 
 export default function CustomCursor({ mouse }) {
   const dotRef = useRef(null);
@@ -11,6 +12,8 @@ export default function CustomCursor({ mouse }) {
     if (window.matchMedia('(pointer: coarse)').matches) {
       return;
     }
+
+    document.body.classList.add('custom-cursor-active');
 
     let ringX = 0;
     let ringY = 0;
@@ -62,6 +65,7 @@ export default function CustomCursor({ mouse }) {
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
+      document.body.classList.remove('custom-cursor-active');
       document.removeEventListener('mouseenter', onMouseEnter);
       document.removeEventListener('mouseleave', onMouseLeave);
       window.removeEventListener('mouseover', handleMouseOver);
@@ -72,26 +76,14 @@ export default function CustomCursor({ mouse }) {
   if (!isVisible) return null;
 
   return (
-    <div className="custom-cursor-container pointer-events-none fixed inset-0 z-50 overflow-hidden">
-      {/* Small precision center dot */}
+    <div className="community-day-cursor">
       <div
         ref={dotRef}
-        className={`fixed top-0 left-0 w-1.5 h-1.5 -ml-[3px] -mt-[3px] rounded-full transition-opacity duration-200 ${
-          cursorState === 'hover' ? 'bg-[#FF9900] scale-150' :
-          cursorState === 'glass' ? 'bg-white opacity-90' : 'bg-white'
-        }`}
+        className={`community-day-cursor__dot community-day-cursor__dot--${cursorState}`}
       />
-      
-      {/* Outer ambient trailing ring */}
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 rounded-full border transition-all duration-300 ease-out pointer-events-none ${
-          cursorState === 'hover'
-            ? 'w-10 h-10 -ml-5 -mt-5 border-[#FF9900]/60 bg-[#FF9900]/10 scale-110'
-            : cursorState === 'glass'
-            ? 'w-16 h-16 -ml-8 -mt-8 border-white/40 bg-white/5 backdrop-blur-[1px] scale-125'
-            : 'w-6 h-6 -ml-3 -mt-3 border-white/25 bg-transparent'
-        }`}
+        className={`community-day-cursor__ring community-day-cursor__ring--${cursorState}`}
       />
     </div>
   );

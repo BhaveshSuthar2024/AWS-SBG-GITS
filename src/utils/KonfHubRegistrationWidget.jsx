@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import "./KonfHubRegistrationWidget.css";
 
-const BUTTON_ID = "btn_7754fd56d988";
+const BUTTON_ID = "btn_042fadf2bbd6";
 const WIDGET_SCRIPT_URL = "https://widget.konfhub.com/widget.js";
 const RegistrationContext = createContext(null);
 

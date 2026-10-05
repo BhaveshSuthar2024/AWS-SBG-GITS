@@ -14,6 +14,7 @@ import { KonfHubRegistrationProvider } from "./utils/KonfHubRegistrationWidget";
 import "./portfolio-theme.css";
 
 const GalleryPage = lazy(() => import("./components/GalleryPage"));
+
 const CommunityDayPage = lazy(
   () => import("./utils/CommunityDayPageRedesign/components/CommunityDayPage"),
 );
@@ -126,7 +127,9 @@ function AppShell() {
 
         {!isCommunityDay && <Navbar />}
         <Suspense
-          fallback={<main className="route-loading" aria-label="Loading page" />}
+          fallback={
+            <main className="route-loading" aria-label="Loading page" />
+          }
         >
           <Routes>
             <Route path="/" element={<ClubHome />} />
