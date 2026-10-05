@@ -15,11 +15,11 @@ import "./portfolio-theme.css";
 
 const GalleryPage = lazy(() => import("./components/GalleryPage"));
 
-// const CommunityDayPage = lazy(
-//   () => import("./utils/CommunityDayPageRedesign/components/CommunityDayPage"),
-// );
+const CommunityDayPage = lazy(
+  () => import("./utils/CommunityDayPageRedesign/components/CommunityDayPage"),
+);
 
-const CommunityDayPage = lazy(() => import("./components/Communitydaypage"));
+// const CommunityDayPage = lazy(() => import("./components/Communitydaypage"));
 
 function scrollToHash(hash) {
   const id = hash.replace("#", "");
