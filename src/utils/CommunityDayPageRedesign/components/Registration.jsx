@@ -1,7 +1,6 @@
 import React from 'react';
-import { eventData } from '../data/event';
-import MagneticButton from './MagneticButton';
-import { ArrowUpRight, CheckCircle2, Ticket } from 'lucide-react';
+import KonfHubRegistrationWidget from '../../KonfHubRegistrationWidget';
+import { ArrowUpRight, Ticket } from 'lucide-react';
 
 export default function Registration() {
   const tiers = [
@@ -103,17 +102,10 @@ export default function Registration() {
             </p>
           </div>
 
-          <div className="shrink-0">
-            <MagneticButton
-              href={eventData.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-5 rounded-full bg-white text-black hover:bg-[#FF9900] hover:text-black text-sm md:text-base font-semibold tracking-wider uppercase transition-all duration-300 shadow-[0_0_35px_rgba(255,255,255,0.2)] hover:shadow-[0_0_45px_rgba(255,153,0,0.6)] flex items-center gap-3 group"
-            >
-              <span>REGISTER ON KONFHUB</span>
-              <ArrowUpRight className="w-5 h-5 text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </MagneticButton>
-          </div>
+          <KonfHubRegistrationWidget className="konfhub-registration-cta shrink-0 group">
+            <span>REGISTER ON KONFHUB</span>
+            <ArrowUpRight className="w-5 h-5 text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </KonfHubRegistrationWidget>
         </div>
 
       </div>

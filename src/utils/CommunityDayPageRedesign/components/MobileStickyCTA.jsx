@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import { eventData } from '../data/event';
+import KonfHubRegistrationWidget from '../../KonfHubRegistrationWidget';
 
 export default function MobileStickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -32,16 +32,10 @@ export default function MobileStickyCTA() {
         <span className="mobile-sticky-subtitle">UDAIPUR '26 · FEB 28</span>
       </div>
 
-      <a
-        href={eventData.registrationUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mobile-sticky-btn"
-        aria-label="Register for AWS Community Day Udaipur on KonfHub"
-      >
+      <KonfHubRegistrationWidget className="mobile-sticky-btn">
         <span>Register</span>
         <ArrowUpRight className="mobile-sticky-arrow" />
-      </a>
+      </KonfHubRegistrationWidget>
     </aside>
   );
 }

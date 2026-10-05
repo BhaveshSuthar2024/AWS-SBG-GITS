@@ -1,0 +1,108 @@
+.konfhub-trigger {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: linear-gradient(100deg, #ffb13d, #ff9900);
+  box-shadow: 0 4px 18px rgba(255, 153, 0, 0.24);
+  color: #14100b;
+  cursor: pointer;
+  font-family: var(--font-sans, Inter, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.konfhub-trigger:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(255, 153, 0, 0.34);
+}
+
+.konfhub-trigger:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 3px;
+}
+
+.konfhub-trigger:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.konfhub-registration-cta {
+  min-height: 54px;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  background: #f5f0e8;
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.18);
+  color: #111;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.konfhub-registration-cta:hover:not(:disabled) {
+  background: #ff9900;
+  box-shadow: 0 0 42px rgba(255, 153, 0, 0.42);
+}
+
+.konfhub-launcher .reg-button {
+  position: absolute !important;
+  top: 0 !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.modal-container-wrapper {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  padding: 16px !important;
+  overflow: auto !important;
+  background: rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.iframe-konfhub-buttons {
+  width: min(600px, calc(100vw - 32px)) !important;
+  max-width: 100% !important;
+  max-height: calc(100dvh - 32px) !important;
+}
+
+.konfhub-widget-error {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2147483647;
+  max-width: min(24rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(255, 153, 0, 0.45);
+  border-radius: 0.5rem;
+  background: #17120a;
+  color: #f5f0e8;
+  font: 0.875rem/1.5 var(--font-sans, sans-serif);
+}

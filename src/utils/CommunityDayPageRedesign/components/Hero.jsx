@@ -1,6 +1,6 @@
 import React from 'react';
-import { eventData } from '../data/event';
 import GlassScene from './GlassScene';
+import KonfHubRegistrationWidget from '../../KonfHubRegistrationWidget';
 import { Calendar, MapPin, ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export default function Hero({ mouse, scrollProgress }) {
@@ -82,16 +82,10 @@ export default function Hero({ mouse, scrollProgress }) {
                 </div>
               </div>
 
-              <a
-                href={eventData.registrationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-mobile-primary-btn group"
-                aria-label="Register for AWS Community Day Udaipur on KonfHub"
-              >
+              <KonfHubRegistrationWidget className="hero-mobile-primary-btn group">
                 <span>REGISTER ON KONFHUB</span>
                 <ArrowUpRight className="hero-mobile-arrow" />
-              </a>
+              </KonfHubRegistrationWidget>
 
               <a
                 href="#about"

@@ -17,7 +17,6 @@ export const eventData = {
   },
   tagline: "WHERE CLOUD MEETS COMMUNITY.",
   subHeadline: "SAME CITY • NEW PERSPECTIVES • BIGGER IDEAS",
-  registrationUrl: "https://konfhub.com/aws-community-day-udaipur-2026",
   cfpUrl: "https://sessionize.com/aws-community-day-udaipur-2026",
   stats: [
     { value: "1,200+", label: "Cloud Builders & Architects" },

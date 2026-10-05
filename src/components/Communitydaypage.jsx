@@ -33,6 +33,7 @@ import {
   sponsors,
   faqs,
 } from "../utils/Communitydaypagedata.js";
+import KonfHubRegistrationWidget from "../utils/KonfHubRegistrationWidget";
 import "./Communitydaypage.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -87,20 +88,16 @@ function EventNav() {
             {label}
           </a>
         ))}
-        <a
+        <KonfHubRegistrationWidget
           className="event-nav-register mobile-register"
-          href={eventInfo.registerUrl}
           onClick={() => setOpen(false)}
         >
           Register <ArrowRight size={15} />
-        </a>
+        </KonfHubRegistrationWidget>
       </nav>
-      <a
-        className="event-nav-register desktop-register"
-        href={eventInfo.registerUrl}
-      >
+      <KonfHubRegistrationWidget className="event-nav-register desktop-register">
         Register <ArrowRight size={15} />
-      </a>
+      </KonfHubRegistrationWidget>
       <button
         className="event-menu-toggle"
         type="button"
@@ -485,7 +482,7 @@ function CommunityDayFooter() {
       <div className="event-footer-bottom">
         <span>AWS Community Day Rajasthan</span>
         <span>© {new Date().getFullYear()} AWS Student Builder Club, GITS</span>
-        <a href={eventInfo.registerUrl}>Register your interest</a>
+        <KonfHubRegistrationWidget>Register your interest</KonfHubRegistrationWidget>
       </div>
     </footer>
   );
@@ -595,9 +592,9 @@ export default function CommunityDayPage() {
               </span>
             </div>
             <div className="hero-actions">
-              <a href={eventInfo.registerUrl} className="event-cta">
+              <KonfHubRegistrationWidget className="event-cta">
                 Register your interest <ArrowRight size={16} />
-              </a>
+              </KonfHubRegistrationWidget>
               <span className="hero-scroll">
                 <ArrowDown size={15} /> Scroll to explore
               </span>
@@ -751,9 +748,9 @@ export default function CommunityDayPage() {
               <br />
               <em>in Udaipur.</em>
             </h2>
-            <a href={eventInfo.registerUrl} className="event-cta">
+            <KonfHubRegistrationWidget className="event-cta">
               Register your interest <ArrowRight size={16} />
-            </a>
+            </KonfHubRegistrationWidget>
           </div>
           <span className="final-cta-orbit" aria-hidden="true" />
         </section>

@@ -7,7 +7,6 @@ export const eventInfo = {
   location: "Geetanjali Institute of Technical Studies (GITS)",
   venue: "Main Auditorium & Innovation Block, Dabok, Udaipur, Rajasthan",
   city: "Udaipur, Rajasthan",
-  registerUrl: "#register",
   college: "Geetanjali Institute of Technical Studies",
 };
 

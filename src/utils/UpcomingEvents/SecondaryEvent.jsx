@@ -10,6 +10,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CalendarIcon, PinIcon } from "./icons";
 import RegisterButton from "./RegisterButton";
+import KonfHubRegistrationWidget from "../KonfHubRegistrationWidget";
 import "../../components/EventSection.css";
 
 const easeOut = [0.16, 1, 0.3, 1];
@@ -53,14 +54,21 @@ export default function SecondaryEvent({ event }) {
           </span>
         </div>
 
-        <RegisterButton
-          href={event.registrationOpen ? event.registrationLink : undefined}
-          disabled={!event.registrationOpen}
-          size="sm"
-          className="evt-secondary__register"
-        >
-          Register
-        </RegisterButton>
+        {event.registrationWidget ? (
+          <KonfHubRegistrationWidget className="evt-btn evt-btn--sm evt-secondary__register">
+            Register
+            <span className="evt-btn__arrow" aria-hidden="true">→</span>
+          </KonfHubRegistrationWidget>
+        ) : (
+          <RegisterButton
+            href={event.registrationOpen ? event.registrationLink : undefined}
+            disabled={!event.registrationOpen}
+            size="sm"
+            className="evt-secondary__register"
+          >
+            Register
+          </RegisterButton>
+        )}
       </div>
     </motion.article>
   );

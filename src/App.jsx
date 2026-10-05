@@ -10,12 +10,15 @@ import EventSection from "./components/EventSection";
 import GalleryPreview from "./components/GalleryPreview";
 import CoreTeamSection from "./components/CoreTeamSection";
 import CustomCursor from "./utils/Cursors/CustomCursor";
+import { KonfHubRegistrationProvider } from "./utils/KonfHubRegistrationWidget";
 import "./portfolio-theme.css";
 
 const GalleryPage = lazy(() => import("./components/GalleryPage"));
 const CommunityDayPage = lazy(
   () => import("./utils/CommunityDayPageRedesign/components/CommunityDayPage"),
 );
+
+// const CommunityDayPage = lazy(() => import("./components/Communitydaypage"));
 
 function scrollToHash(hash) {
   const id = hash.replace("#", "");
@@ -117,21 +120,23 @@ function AppShell() {
   const isCommunityDay = location.pathname === "/community-day";
 
   return (
-    <>
-      {!isCommunityDay && <CustomCursor />}
+    <KonfHubRegistrationProvider>
+      <>
+        {!isCommunityDay && <CustomCursor />}
 
-      {!isCommunityDay && <Navbar />}
-      <Suspense
-        fallback={<main className="route-loading" aria-label="Loading page" />}
-      >
-        <Routes>
-          <Route path="/" element={<ClubHome />} />
-          <Route path="/community-day" element={<CommunityDayPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-        </Routes>
-      </Suspense>
-      {!isCommunityDay && <Footer />}
-    </>
+        {!isCommunityDay && <Navbar />}
+        <Suspense
+          fallback={<main className="route-loading" aria-label="Loading page" />}
+        >
+          <Routes>
+            <Route path="/" element={<ClubHome />} />
+            <Route path="/community-day" element={<CommunityDayPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+          </Routes>
+        </Suspense>
+        {!isCommunityDay && <Footer />}
+      </>
+    </KonfHubRegistrationProvider>
   );
 }
 

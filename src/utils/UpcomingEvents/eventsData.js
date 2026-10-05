@@ -14,10 +14,10 @@ export const sampleEvents = [
     format: "Offline",
     certificate: true,
     registrationOpen: true,
+    registrationWidget: true,
     capacity: 150,
     registeredCount: 0,
     countdownTarget: "2026-10-31T09:00:00",
-    registrationLink: "/community-day",
   },
   {
     id: "evt-genai-workshop",

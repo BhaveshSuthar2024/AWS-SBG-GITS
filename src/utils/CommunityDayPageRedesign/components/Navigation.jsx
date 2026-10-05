@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { eventData } from '../data/event';
+import KonfHubRegistrationWidget from '../../KonfHubRegistrationWidget';
 import { ArrowRight, Menu, X } from 'lucide-react';
 
 export default function Navigation({ activeSection = 'home' }) {
@@ -89,15 +89,10 @@ export default function Navigation({ activeSection = 'home' }) {
 
           {/* Top-Right: Apple-style Minimalist Registration Pill Button */}
           <div className="hidden lg:flex items-center">
-            <a
-              href={eventData.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-cta-btn"
-            >
+            <KonfHubRegistrationWidget className="nav-cta-btn">
               <span>Register on KonfHub</span>
               <ArrowRight className="nav-cta-arrow" />
-            </a>
+            </KonfHubRegistrationWidget>
           </div>
 
           {/* Mobile Menu Toggle Button */}
@@ -145,16 +140,10 @@ export default function Navigation({ activeSection = 'home' }) {
           </nav>
 
           <div>
-            <a
-              href={eventData.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-cta-btn w-full justify-center py-3.5 text-sm"
-              style={{ borderColor: '#FF9900', color: '#ffae42' }}
-            >
+            <KonfHubRegistrationWidget className="nav-cta-btn w-full justify-center py-3.5 text-sm">
               <span>Register on KonfHub</span>
               <ArrowRight className="w-4 h-4 text-[#FF9900] ml-1" />
-            </a>
+            </KonfHubRegistrationWidget>
             <div className="text-[11px] font-mono text-zinc-500 text-center mt-4 tracking-wider">
               AWS COMMUNITY DAY · UDAIPUR 2026
             </div>

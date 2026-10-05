@@ -22,6 +22,7 @@ import EventChips, { chipsForEvent } from "./EventChips";
 import EventCountdown from "./EventCountdown";
 import EventProgress from "./EventProgress";
 import RegisterButton from "./RegisterButton";
+import KonfHubRegistrationWidget from "../KonfHubRegistrationWidget";
 import { CalendarIcon, ClockIcon, PinIcon, UserIcon } from "./icons";
 import { usePrefersReducedMotion } from "../../customHooks/usePrefersReducedMotion";
 import "../../components/EventSection.css";
@@ -140,13 +141,20 @@ export default function HeroEvent({ event }) {
                 className="evt-hero__progress"
               />
             )}
-            <RegisterButton
-              href={event.registrationOpen ? event.registrationLink : undefined}
-              disabled={!event.registrationOpen}
-              className="evt-hero__register"
-            >
-              Register Now
-            </RegisterButton>
+            {event.registrationWidget ? (
+              <KonfHubRegistrationWidget className="evt-btn evt-btn--lg evt-hero__register">
+                Register Now
+                <span className="evt-btn__arrow" aria-hidden="true">→</span>
+              </KonfHubRegistrationWidget>
+            ) : (
+              <RegisterButton
+                href={event.registrationOpen ? event.registrationLink : undefined}
+                disabled={!event.registrationOpen}
+                className="evt-hero__register"
+              >
+                Register Now
+              </RegisterButton>
+            )}
           </div>
         </div>
       </div>
