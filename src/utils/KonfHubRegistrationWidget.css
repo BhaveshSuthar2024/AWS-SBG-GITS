@@ -57,18 +57,7 @@
   box-shadow: 0 0 42px rgba(255, 153, 0, 0.42);
 }
 
-.konfhub-launcher .reg-button {
-  position: absolute !important;
-  top: 0 !important;
-  left: -10000px !important;
-  width: 1px !important;
-  height: 1px !important;
-  overflow: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.modal-container-wrapper {
+.konfhub-modal-backdrop {
   position: fixed !important;
   inset: 0 !important;
   z-index: 2147483647 !important;
@@ -81,38 +70,165 @@
   height: 100dvh !important;
   padding: 16px !important;
   overflow: auto !important;
-  background:
-    radial-gradient(ellipse at center, rgba(24, 37, 51, 0.8), rgba(8, 12, 18, 0.9)),
-    rgba(8, 12, 18, 0.82) !important;
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgba(8, 12, 18, 0.84) !important;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
-.iframe-konfhub-buttons,
-.modal-container-wrapper iframe {
-  width: min(600px, calc(100vw - 32px)) !important;
+.konfhub-modal {
+  width: min(960px, 100%);
   max-width: 100% !important;
-  max-height: calc(100dvh - 32px) !important;
-  border: 1px solid rgba(255, 177, 94, 0.42) !important;
-  border-radius: 10px !important;
-  background: #f2eee6 !important;
-  box-shadow:
-    0 28px 90px rgba(0, 0, 0, 0.55),
-    0 0 0 5px rgba(255, 153, 0, 0.08),
-    0 0 36px rgba(255, 153, 0, 0.16) !important;
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 247, 236, 0.2);
+  border-radius: 12px;
+  background: #121d2b;
+  color: #f2eee6;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.38);
+  font-family: "DM Sans", var(--font-sans, Inter, sans-serif);
 }
 
-.konfhub-widget-error {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 2147483647;
-  max-width: min(24rem, calc(100vw - 2rem));
+.konfhub-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.125rem 1.375rem;
+  border-bottom: 1px solid rgba(242, 238, 230, 0.12);
+}
+
+.konfhub-modal-eyebrow {
+  margin: 0 0 0.3rem;
+  color: #ffb15e;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.konfhub-modal-header h2 {
   margin: 0;
-  padding: 0.875rem 1rem;
-  border: 1px solid rgba(255, 153, 0, 0.45);
-  border-radius: 0.5rem;
-  background: #17120a;
-  color: #f5f0e8;
-  font: 0.875rem/1.5 var(--font-sans, sans-serif);
+  color: #f2eee6;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.konfhub-modal-close {
+  display: grid;
+  flex: 0 0 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid rgba(242, 238, 230, 0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: #f2eee6;
+  cursor: pointer;
+  font-size: 1.65rem;
+  line-height: 1;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.konfhub-modal-close:hover {
+  border-color: #ff9900;
+  background: rgba(255, 153, 0, 0.12);
+}
+
+.konfhub-modal-close:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 3px;
+}
+
+.konfhub-registration-frame-wrap {
+  position: relative;
+  min-height: 320px;
+  background: #121d2b;
+}
+
+.konfhub-registration-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  min-height: 320px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #121d2b;
+  color: #f2eee6;
+  font-size: 0.9rem;
+}
+
+.konfhub-registration-spinner {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid rgba(242, 238, 230, 0.28);
+  border-top-color: #ff9900;
+  border-radius: 50%;
+  animation: konfhub-spin 0.75s linear infinite;
+}
+
+@keyframes konfhub-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.konfhub-registration-frame {
+  display: block;
+  width: 100%;
+  height: min(500px, calc(100dvh - 112px));
+  min-height: 320px;
+  border: 0;
+  background: #121d2b;
+  cursor: auto !important;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.konfhub-registration-frame.is-loaded {
+  opacity: 1;
+}
+
+body.custom-cursor-active .konfhub-modal-backdrop,
+body.custom-cursor-active .konfhub-modal-backdrop * {
+  cursor: auto !important;
+}
+
+@media (max-width: 600px) {
+  .konfhub-modal-backdrop {
+    align-items: flex-start !important;
+    padding: 10px !important;
+  }
+
+  .konfhub-modal {
+    max-height: calc(100dvh - 20px);
+    border-radius: 8px;
+  }
+
+  .konfhub-modal-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .konfhub-registration-frame {
+    height: min(500px, calc(100dvh - 94px));
+    min-height: 280px;
+  }
+
+  .konfhub-registration-frame-wrap,
+  .konfhub-registration-loading {
+    min-height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .konfhub-registration-spinner {
+    animation-duration: 1.5s;
+  }
+
+  .konfhub-registration-frame {
+    transition: none;
+  }
 }

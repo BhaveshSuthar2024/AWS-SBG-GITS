@@ -7,61 +7,98 @@ import React, {
 } from "react";
 import "./KonfHubRegistrationWidget.css";
 
-const BUTTON_ID = "btn_042fadf2bbd6";
-const WIDGET_SCRIPT_URL = "https://widget.konfhub.com/widget.js";
+const REGISTRATION_URL =
+  "https://konfhub.com/widget/id/6809de9d-d37e-4201-837a-3e04d0359f4e";
 const RegistrationContext = createContext(null);
 
 export function KonfHubRegistrationProvider({ children }) {
-  const launcherRef = useRef(null);
-  const [ready, setReady] = useState(false);
-  const [loadFailed, setLoadFailed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [frameLoaded, setFrameLoaded] = useState(false);
+  const closeButtonRef = useRef(null);
+  const openerRef = useRef(null);
 
   useEffect(() => {
-    const launcher = launcherRef.current;
-    if (!launcher) return undefined;
+    if (!isOpen) return undefined;
 
-    const observer = new MutationObserver(() => {
-      if (launcher.querySelector("button.reg-button")) {
-        setReady(true);
-        observer.disconnect();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
       }
-    });
-    observer.observe(launcher, { childList: true, subtree: true });
-
-    const script = document.createElement("script");
-    script.src = WIDGET_SCRIPT_URL;
-    script.async = false;
-    script.setAttribute("button_id", BUTTON_ID);
-    script.onerror = () => setLoadFailed(true);
-    launcher.appendChild(script);
+    };
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      observer.disconnect();
-      script.onerror = null;
-      script.remove();
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      openerRef.current?.focus();
     };
-  }, []);
+  }, [isOpen]);
 
-  const openRegistration = () => {
-    const button = launcherRef.current?.querySelector("button.reg-button");
-    if (button) {
-      button.click();
-    }
+  const openRegistration = (opener) => {
+    openerRef.current = opener;
+    setFrameLoaded(false);
+    setIsOpen(true);
   };
 
+  const closeRegistration = () => setIsOpen(false);
+
   return (
-    <RegistrationContext.Provider value={{ openRegistration, ready }}>
+    <RegistrationContext.Provider value={{ openRegistration }}>
       {children}
-      <div
-        ref={launcherRef}
-        className="konfhub-launcher"
-        aria-hidden="true"
-      />
-      {loadFailed && (
-        <p className="konfhub-widget-error" role="alert">
-          Registration could not be loaded. Please refresh the page and try
-          again.
-        </p>
+      {isOpen && (
+        <div
+          className="konfhub-modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeRegistration();
+          }}
+        >
+          <section
+            className="konfhub-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="konfhub-modal-title"
+          >
+            <header className="konfhub-modal-header">
+              <div>
+                <p className="konfhub-modal-eyebrow">AWS COMMUNITY DAY</p>
+                <h2 id="konfhub-modal-title">
+                  Register for AWS Student Community Day
+                </h2>
+              </div>
+              <button
+                ref={closeButtonRef}
+                className="konfhub-modal-close"
+                type="button"
+                onClick={closeRegistration}
+                aria-label="Close registration"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </header>
+            <div className="konfhub-registration-frame-wrap">
+              {!frameLoaded && (
+                <div className="konfhub-registration-loading" role="status">
+                  <span className="konfhub-registration-spinner" />
+                  <span>Loading registration…</span>
+                </div>
+              )}
+              <iframe
+                className={`konfhub-registration-frame${frameLoaded ? " is-loaded" : ""}`}
+                src={REGISTRATION_URL}
+                id="konfhub-widget"
+                title="Register for AWS Student Community Day"
+                width="100%"
+                height="500"
+                allow="payment"
+                onLoad={() => setFrameLoaded(true)}
+              />
+            </div>
+          </section>
+        </div>
       )}
     </RegistrationContext.Provider>
   );
@@ -81,7 +118,7 @@ export default function KonfHubRegistrationWidget({
   }
 
   const handleClick = (event) => {
-    registration.openRegistration();
+    registration.openRegistration(event.currentTarget);
     onClick?.(event);
   };
 
@@ -91,8 +128,6 @@ export default function KonfHubRegistrationWidget({
       type="button"
       className={`konfhub-trigger ${className}`.trim()}
       onClick={handleClick}
-      disabled={!registration.ready}
-      aria-busy={!registration.ready}
     >
       {children}
     </button>
