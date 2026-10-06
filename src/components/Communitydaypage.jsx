@@ -154,6 +154,7 @@ function EventTracks() {
         const distance = () =>
           Math.max(0, rail.scrollWidth - viewport.clientWidth);
         const settleDistance = () => Math.max(480, cards.length * 90);
+        const railTravelDuration = 0.86;
         gsap.set(cards, {
           rotateY: (i) => (i % 2 ? 8 : -8),
           z: -24,
@@ -171,13 +172,19 @@ function EventTracks() {
         });
         sequence.to(
           rail,
-          { x: () => -distance(), duration: 0.82, ease: "none" },
+          { x: () => -distance(), duration: railTravelDuration, ease: "none" },
           0,
         );
         sequence.to(
           cards,
-          { rotateY: 0, z: 0, scale: 1, duration: 0.18, ease: "none" },
-          0.82,
+          {
+            rotateY: 0,
+            z: 0,
+            scale: 1,
+            duration: 1 - railTravelDuration,
+            ease: "none",
+          },
+          railTravelDuration,
         );
       }
     }, section);
