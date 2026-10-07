@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect, useMemo, Suspense } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import * as THREE from 'three';
-import gsap from 'gsap';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { speakersData } from '../data/speakers';
-import { speakerVertexShader, speakerFragmentShader } from '../shaders/speakerTransitionShader';
+import React, { useState, useRef, useEffect, useMemo, Suspense } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import * as THREE from "three";
+import gsap from "gsap";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { speakersData } from "../data/speakers";
+import {
+  speakerVertexShader,
+  speakerFragmentShader,
+} from "../shaders/speakerTransitionShader";
 
 // =============================================================================
 // 1. WEBGL SPEAKER PLANE WITH CHROMATIC GLITCH SHADER
@@ -19,29 +22,33 @@ function ActiveSpeakerPlane({
   hoverRef,
   dragRef,
   onPointerOver,
-  onPointerOut
+  onPointerOut,
 }) {
   const meshRef = useRef();
 
-  const uniforms = useMemo(() => ({
-    uCurrentTexture: { value: texture },
-    uNextTexture: { value: nextTexture || texture },
-    uProgress: { value: 0.0 },
-    uDirection: { value: 1.0 },
-    uDistortion: { value: 1.2 },
-    uChromatic: { value: 1.4 },
-    uGlitch: { value: 1.0 },
-    uTime: { value: 0.0 },
-    uParallax: { value: new THREE.Vector2(0, 0) },
-    uHover: { value: 0.0 },
-    uOpacity: { value: 1.0 },
-    uIsActive: { value: 1.0 }
-  }), []);
+  const uniforms = useMemo(
+    () => ({
+      uCurrentTexture: { value: texture },
+      uNextTexture: { value: nextTexture || texture },
+      uProgress: { value: 0.0 },
+      uDirection: { value: 1.0 },
+      uDistortion: { value: 1.2 },
+      uChromatic: { value: 1.4 },
+      uGlitch: { value: 1.0 },
+      uTime: { value: 0.0 },
+      uParallax: { value: new THREE.Vector2(0, 0) },
+      uHover: { value: 0.0 },
+      uOpacity: { value: 1.0 },
+      uIsActive: { value: 1.0 },
+    }),
+    [],
+  );
 
   useEffect(() => {
     if (meshRef.current) {
       meshRef.current.material.uniforms.uCurrentTexture.value = texture;
-      meshRef.current.material.uniforms.uNextTexture.value = nextTexture || texture;
+      meshRef.current.material.uniforms.uNextTexture.value =
+        nextTexture || texture;
     }
   }, [texture, nextTexture]);
 
@@ -58,19 +65,19 @@ function ActiveSpeakerPlane({
     mat.uniforms.uParallax.value.x = THREE.MathUtils.lerp(
       mat.uniforms.uParallax.value.x,
       parallaxRef.current.x,
-      0.08
+      0.08,
     );
     mat.uniforms.uParallax.value.y = THREE.MathUtils.lerp(
       mat.uniforms.uParallax.value.y,
       parallaxRef.current.y,
-      0.08
+      0.08,
     );
 
     // Smooth hover factor
     mat.uniforms.uHover.value = THREE.MathUtils.lerp(
       mat.uniforms.uHover.value,
       hoverRef.current ? 1.0 : 0.0,
-      0.1
+      0.1,
     );
 
     // Dynamic horizontal drag displacement
@@ -78,13 +85,21 @@ function ActiveSpeakerPlane({
     meshRef.current.position.x = THREE.MathUtils.lerp(
       meshRef.current.position.x,
       targetX,
-      0.15
+      0.15,
     );
 
     // Micro-scale hover effect (1.00 -> 1.015)
     const targetScale = hoverRef.current ? 1.015 : 1.0;
-    meshRef.current.scale.x = THREE.MathUtils.lerp(meshRef.current.scale.x, targetScale, 0.1);
-    meshRef.current.scale.y = THREE.MathUtils.lerp(meshRef.current.scale.y, targetScale, 0.1);
+    meshRef.current.scale.x = THREE.MathUtils.lerp(
+      meshRef.current.scale.x,
+      targetScale,
+      0.1,
+    );
+    meshRef.current.scale.y = THREE.MathUtils.lerp(
+      meshRef.current.scale.y,
+      targetScale,
+      0.1,
+    );
   });
 
   return (
@@ -114,7 +129,7 @@ function NeighborSpeakerPlane({
   positionX,
   scale = 0.78,
   dragRef,
-  onClick
+  onClick,
 }) {
   const meshRef = useRef();
 
@@ -124,7 +139,7 @@ function NeighborSpeakerPlane({
     meshRef.current.position.x = THREE.MathUtils.lerp(
       meshRef.current.position.x,
       targetX,
-      0.15
+      0.15,
     );
   });
 
@@ -151,6 +166,7 @@ function NeighborSpeakerPlane({
 // =============================================================================
 
 function SpeakerGalleryScene({
+  speakers,
   currentIndex,
   targetIndex,
   progressRef,
@@ -160,10 +176,12 @@ function SpeakerGalleryScene({
   dragRef,
   onPrev,
   onNext,
-  onHoverChange
+  onHoverChange,
 }) {
-  // Load all 6 speaker textures into cache
-  const imagePaths = useMemo(() => speakersData.map((s) => s.image), []);
+  const imagePaths = useMemo(
+    () => speakers.map((speaker) => speaker.image),
+    [speakers],
+  );
   const textures = useLoader(THREE.TextureLoader, imagePaths);
 
   useEffect(() => {
@@ -174,7 +192,7 @@ function SpeakerGalleryScene({
     });
   }, [textures]);
 
-  const count = speakersData.length;
+  const count = speakers.length;
   const prevIdx = (currentIndex - 1 + count) % count;
   const nextIdx = (currentIndex + 1) % count;
 
@@ -218,11 +236,11 @@ function SpeakerGalleryScene({
 
 function SpeakerFallback({ speaker }) {
   const initials = speaker.name
-    .split(' ')
+    .split(" ")
     .filter(Boolean)
     .slice(0, 2)
     .map((w) => w[0])
-    .join('');
+    .join("");
 
   return (
     <div className="w-full h-full flex items-center justify-center bg-[#070707] border border-white/10 rounded-sm p-8 text-center">
@@ -230,7 +248,9 @@ function SpeakerFallback({ speaker }) {
         <div className="text-6xl font-light font-display text-zinc-600 mb-4 tracking-wider">
           {initials}
         </div>
-        <div className="text-lg font-medium text-white mb-1">{speaker.name}</div>
+        <div className="text-lg font-medium text-white mb-1">
+          {speaker.name}
+        </div>
         <div className="text-xs font-mono text-[#FF9900] uppercase tracking-widest mb-4">
           {speaker.company}
         </div>
@@ -244,7 +264,7 @@ function SpeakerFallback({ speaker }) {
 // 5. MAIN CINEMATIC SPEAKERS COMPONENT
 // =============================================================================
 
-export default function Speakers() {
+export default function Speakers({ speakers = speakersData }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [targetIndex, setTargetIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -266,8 +286,11 @@ export default function Speakers() {
   // Cooldown for trackpad wheel gestures
   const wheelCooldownRef = useRef(false);
 
-  const totalSpeakers = speakersData.length;
-  const currentSpeaker = speakersData[currentIndex];
+  const totalSpeakers = speakers.length;
+  const currentSpeaker = speakers[currentIndex];
+  const usesPlaceholderGallery = speakers.every(
+    (speaker) => speaker.placeholder,
+  );
 
   // ---------------------------------------------------------------------------
   // TRANSITION CONTROLLER (GSAP + GLSL SHADER PROGRESS)
@@ -276,7 +299,9 @@ export default function Speakers() {
     if (isAnimating.current || newIndex === currentIndex) return;
 
     // Check prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     isAnimating.current = true;
     directionRef.current = direction;
@@ -294,7 +319,7 @@ export default function Speakers() {
 
     // 1. Staggered Exit Animation for Typography
     const elementsToExit = textContainerRef.current
-      ? textContainerRef.current.querySelectorAll('.stagger-text')
+      ? textContainerRef.current.querySelectorAll(".stagger-text")
       : [];
 
     gsap.to(elementsToExit, {
@@ -302,7 +327,7 @@ export default function Speakers() {
       opacity: 0,
       duration: 0.22,
       stagger: 0.03,
-      ease: 'power2.in'
+      ease: "power2.in",
     });
 
     // 2. Animate Shader Progress (0.0 -> 1.0)
@@ -312,7 +337,7 @@ export default function Speakers() {
       {
         current: 1.0,
         duration: 0.85,
-        ease: 'power3.inOut',
+        ease: "power3.inOut",
         onComplete: () => {
           // Transition complete: lock new index and return to idle
           setCurrentIndex(newIndex);
@@ -322,7 +347,7 @@ export default function Speakers() {
 
           // 3. Staggered Entrance Animation for New Typography
           const elementsToEnter = textContainerRef.current
-            ? textContainerRef.current.querySelectorAll('.stagger-text')
+            ? textContainerRef.current.querySelectorAll(".stagger-text")
             : [];
 
           gsap.fromTo(
@@ -333,11 +358,11 @@ export default function Speakers() {
               opacity: 1,
               duration: 0.42,
               stagger: 0.05,
-              ease: 'power2.out'
-            }
+              ease: "power2.out",
+            },
           );
-        }
-      }
+        },
+      },
     );
   };
 
@@ -359,7 +384,7 @@ export default function Speakers() {
     dragStartRef.current = {
       x: e.clientX,
       time: performance.now(),
-      active: true
+      active: true,
     };
   };
 
@@ -393,7 +418,7 @@ export default function Speakers() {
       handlePrev();
     } else {
       // Snap back smoothly
-      gsap.to(dragRef, { current: 0.0, duration: 0.35, ease: 'power2.out' });
+      gsap.to(dragRef, { current: 0.0, duration: 0.35, ease: "power2.out" });
     }
   };
 
@@ -402,16 +427,20 @@ export default function Speakers() {
   // ---------------------------------------------------------------------------
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') {
+      if (e.key === "ArrowRight") {
         handleNext();
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === "ArrowLeft") {
         handlePrev();
       }
     };
 
     const handleWheel = (e) => {
       // Horizontal trackpad gesture
-      if (Math.abs(e.deltaX) > 40 && !wheelCooldownRef.current && !isAnimating.current) {
+      if (
+        Math.abs(e.deltaX) > 40 &&
+        !wheelCooldownRef.current &&
+        !isAnimating.current
+      ) {
         wheelCooldownRef.current = true;
         if (e.deltaX > 0) {
           handleNext();
@@ -424,16 +453,16 @@ export default function Speakers() {
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
     const container = containerRef.current;
     if (container) {
-      container.addEventListener('wheel', handleWheel, { passive: true });
+      container.addEventListener("wheel", handleWheel, { passive: true });
     }
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
       if (container) {
-        container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener("wheel", handleWheel);
       }
     };
   }, [currentIndex]);
@@ -446,7 +475,7 @@ export default function Speakers() {
   return (
     <section
       id="speakers"
-      className="relative w-full py-28 md:py-36 bg-[#050505] text-white border-t border-white/5 overflow-hidden select-none"
+      className="community-speakers-section relative w-full py-28 md:py-36 bg-[#050505] text-white border-t border-white/5 overflow-hidden select-none"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* =================================================================== */}
@@ -455,7 +484,9 @@ export default function Speakers() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-xs font-mono font-medium text-zinc-400">03</span>
+              <span className="text-xs font-mono font-medium text-zinc-400">
+                03
+              </span>
               <div className="w-8 h-[1px] bg-white/20" />
               <span className="text-xs font-mono tracking-widest text-[#FF9900] uppercase">
                 SPEAKERS
@@ -467,18 +498,20 @@ export default function Speakers() {
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-light font-display text-white tracking-tight leading-none">
               Meet the people <br className="hidden sm:inline" />
-              <span className="text-zinc-400 font-extralight">shaping the cloud.</span>
+              <span className="text-zinc-400 font-extralight">
+                shaping the cloud.
+              </span>
             </h2>
           </div>
 
           {/* Vertical Slide Index Counter */}
           <div className="flex items-baseline gap-2 font-mono">
             <span className="text-3xl sm:text-4xl font-light text-[#FF9900] tracking-tight">
-              {String(currentIndex + 1).padStart(2, '0')}
+              {String(currentIndex + 1).padStart(2, "0")}
             </span>
             <span className="text-base text-zinc-400 font-light">/</span>
             <span className="text-base text-zinc-400 font-light">
-              {String(totalSpeakers).padStart(2, '0')}
+              {String(totalSpeakers).padStart(2, "0")}
             </span>
           </div>
         </div>
@@ -488,41 +521,65 @@ export default function Speakers() {
         {/* =================================================================== */}
         <div
           ref={containerRef}
-          className="relative w-full h-[52vh] sm:h-[58vh] md:h-[66vh] max-h-[640px] rounded-sm overflow-hidden cursor-grab active:cursor-grabbing border border-white/5 bg-[#030303]"
+          className="community-speakers-viewport relative w-full h-[52vh] sm:h-[58vh] md:h-[66vh] max-h-[640px] rounded-sm overflow-hidden cursor-grab active:cursor-grabbing border border-white/5 bg-[#030303]"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
         >
           {/* Subtle vignette backdrop masks on left & right flanks */}
-          <div className="absolute inset-y-0 left-0 w-24 md:w-44 bg-gradient-to-r from-[#050505] via-[#050505]/70 to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 md:w-44 bg-gradient-to-l from-[#050505] via-[#050505]/70 to-transparent z-10 pointer-events-none" />
+          <div className="community-speakers-vignette absolute inset-y-0 left-0 w-24 md:w-44 bg-gradient-to-r from-[#050505] via-[#050505]/70 to-transparent z-10 pointer-events-none" />
+          <div className="community-speakers-vignette absolute inset-y-0 right-0 w-24 md:w-44 bg-gradient-to-l from-[#050505] via-[#050505]/70 to-transparent z-10 pointer-events-none" />
 
           {/* Three.js Canvas with 3D Gallery Planes */}
-          <Canvas
-            camera={{ position: [0, 0, 5.8], fov: 38 }}
-            dpr={[1, Math.min(window.devicePixelRatio, 2)]}
-            gl={{
-              antialias: true,
-              powerPreference: 'high-performance',
-              alpha: true
-            }}
-          >
-            <Suspense fallback={null}>
-              <SpeakerGalleryScene
-                currentIndex={currentIndex}
-                targetIndex={targetIndex}
-                progressRef={progressRef}
-                directionRef={directionRef}
-                parallaxRef={parallaxRef}
-                hoverRef={hoverRef}
-                dragRef={dragRef}
-                onPrev={handlePrev}
-                onNext={handleNext}
-                onHoverChange={onHoverChange}
-              />
-            </Suspense>
-          </Canvas>
+          {usesPlaceholderGallery ? (
+            <div
+              className="community-speakers-placeholder-gallery"
+              aria-hidden="true"
+            >
+              {[currentIndex - 1, currentIndex, currentIndex + 1].map(
+                (index, position) => {
+                  const speakerIndex = (index + totalSpeakers) % totalSpeakers;
+                  return (
+                    <div
+                      key={`${speakers[speakerIndex].number}-${position}`}
+                      className={`community-speakers-placeholder-card ${
+                        position === 1 ? "is-active" : ""
+                      }`}
+                    >
+                      <img src="" alt="" />
+                    </div>
+                  );
+                },
+              )}
+            </div>
+          ) : (
+            <Canvas
+              camera={{ position: [0, 0, 5.8], fov: 38 }}
+              dpr={[1, Math.min(window.devicePixelRatio, 2)]}
+              gl={{
+                antialias: true,
+                powerPreference: "high-performance",
+                alpha: true,
+              }}
+            >
+              <Suspense fallback={null}>
+                <SpeakerGalleryScene
+                  speakers={speakers}
+                  currentIndex={currentIndex}
+                  targetIndex={targetIndex}
+                  progressRef={progressRef}
+                  directionRef={directionRef}
+                  parallaxRef={parallaxRef}
+                  hoverRef={hoverRef}
+                  dragRef={dragRef}
+                  onPrev={handlePrev}
+                  onNext={handleNext}
+                  onHoverChange={onHoverChange}
+                />
+              </Suspense>
+            </Canvas>
+          )}
 
           {/* Minimal Floating Navigation Arrows */}
           <div className="absolute inset-y-0 left-4 md:left-8 flex items-center z-20 pointer-events-none">
@@ -532,7 +589,9 @@ export default function Speakers() {
               className="pointer-events-auto flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-md text-xs font-mono text-zinc-400 hover:text-white hover:border-[#FF9900]/50 transition-all duration-300 group cursor-pointer"
             >
               <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform text-[#FF9900]" />
-              <span className="tracking-widest uppercase text-[11px]">PREV</span>
+              <span className="tracking-widest uppercase text-[11px]">
+                PREV
+              </span>
             </button>
           </div>
 
@@ -542,7 +601,9 @@ export default function Speakers() {
               aria-label="Next speaker"
               className="pointer-events-auto flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-md text-xs font-mono text-zinc-400 hover:text-white hover:border-[#FF9900]/50 transition-all duration-300 group cursor-pointer"
             >
-              <span className="tracking-widest uppercase text-[11px]">NEXT</span>
+              <span className="tracking-widest uppercase text-[11px]">
+                NEXT
+              </span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#FF9900]" />
             </button>
           </div>
@@ -552,7 +613,7 @@ export default function Speakers() {
             <span>UDAIPUR EDITION / 26</span>
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF9900] animate-pulse" />
-              KEYNOTE SESSION
+              {currentSpeaker.category || "KEYNOTE SESSION"}
             </span>
           </div>
         </div>
@@ -562,7 +623,6 @@ export default function Speakers() {
         {/* =================================================================== */}
         <div ref={textContainerRef} className="mt-8 md:mt-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
-            
             {/* Left Column: Speaker Identity */}
             <div className="lg:col-span-7">
               <div className="stagger-text text-[11px] font-mono tracking-[0.25em] text-[#FF9900] uppercase mb-1.5">
@@ -575,8 +635,14 @@ export default function Speakers() {
 
               <div className="stagger-text text-sm sm:text-base font-normal text-zinc-300 tracking-wide mt-2 flex flex-wrap items-center gap-2">
                 <span>{currentSpeaker.role}</span>
-                <span className="text-zinc-600">·</span>
-                <span className="text-[#FF9900] font-medium">{currentSpeaker.company}</span>
+                {currentSpeaker.company && (
+                  <>
+                    <span className="text-zinc-600">·</span>
+                    <span className="text-[#FF9900] font-medium">
+                      {currentSpeaker.company}
+                    </span>
+                  </>
+                )}
               </div>
             </div>
 
@@ -586,7 +652,8 @@ export default function Speakers() {
                 SESSION FOCUS
               </div>
               <p className="stagger-text text-sm md:text-base font-light text-zinc-300 leading-snug">
-                {currentSpeaker.topic}
+                {currentSpeaker.topic ||
+                  "Session details will be announced soon."}
               </p>
 
               {/* Architectural Topic Tags */}
@@ -601,7 +668,6 @@ export default function Speakers() {
                 ))}
               </div>
             </div>
-
           </div>
         </div>
 
@@ -614,7 +680,7 @@ export default function Speakers() {
             <div
               className="absolute top-0 left-0 h-full bg-[#FF9900] transition-all duration-500 ease-out"
               style={{
-                width: `${((currentIndex + 1) / totalSpeakers) * 100}%`
+                width: `${((currentIndex + 1) / totalSpeakers) * 100}%`,
               }}
             />
           </div>
@@ -631,15 +697,15 @@ export default function Speakers() {
                 CLOUD · COMMUNITY · INNOVATION
               </span>
               <div className="flex items-center gap-2">
-                {speakersData.map((_, idx) => (
+                {speakers.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => goToSlide(idx, idx > currentIndex ? 1 : -1)}
                     aria-label={`Jump to speaker ${idx + 1}`}
                     className={`w-6 h-1 rounded-full transition-all duration-300 ${
                       idx === currentIndex
-                        ? 'bg-[#FF9900] w-8'
-                        : 'bg-white/15 hover:bg-white/30'
+                        ? "bg-[#FF9900] w-8"
+                        : "bg-white/15 hover:bg-white/30"
                     }`}
                   />
                 ))}
@@ -647,7 +713,6 @@ export default function Speakers() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

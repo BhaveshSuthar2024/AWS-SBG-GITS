@@ -119,7 +119,10 @@ function VolunteerMarqueeRow({ items, direction = 'left', speed = 0.95, offset =
 // MAIN VOLUNTEERS SECTION COMPONENT
 // =============================================================================
 
-export default function Volunteers() {
+export default function Volunteers({
+  rows = [volunteersRow1, volunteersRow2, volunteersRow3],
+  summary = "12 VOLUNTEERS • 3 VENUE TRACKS • 1 UNIFIED SPIRIT",
+}) {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
   const wallRef = useRef(null);
@@ -193,7 +196,7 @@ export default function Volunteers() {
           </div>
 
           <div className="max-w-xs md:text-right font-mono text-xs text-zinc-400">
-            <span>12 VOLUNTEERS</span> • <span>3 VENUE TRACKS</span> • <span>1 UNIFIED SPIRIT</span>
+            {summary}
           </div>
         </div>
       </div>
@@ -202,32 +205,16 @@ export default function Volunteers() {
       {/* 2. THREE ALTERNATING HORIZONTAL MARQUEE ROWS                        */}
       {/* =================================================================== */}
       <div ref={wallRef} className="flex flex-col gap-4 sm:gap-6 w-full">
-        {/* Row 01: Moves Right → */}
-        <VolunteerMarqueeRow
-          items={volunteersRow1}
-          direction="right"
-          speed={0.95}
-          offset={0}
-          label="Volunteers Row 1"
-        />
-
-        {/* Row 02: Moves Left ← with Offset */}
-        <VolunteerMarqueeRow
-          items={volunteersRow2}
-          direction="left"
-          speed={0.95}
-          offset={-120}
-          label="Volunteers Row 2"
-        />
-
-        {/* Row 03: Moves Right → with Different Offset */}
-        <VolunteerMarqueeRow
-          items={volunteersRow3}
-          direction="right"
-          speed={0.95}
-          offset={-240}
-          label="Volunteers Row 3"
-        />
+        {rows.map((items, index) => (
+          <VolunteerMarqueeRow
+            key={`volunteers-row-${index + 1}`}
+            items={items}
+            direction={index % 2 === 0 ? "right" : "left"}
+            speed={0.95}
+            offset={index % 2 === 0 ? 0 : -120 * index}
+            label={`Volunteers Row ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

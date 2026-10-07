@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { coreTeamRow1, coreTeamRow2 } from '../data/team';
@@ -185,7 +185,7 @@ function InteractiveMarqueeRow({
 // MAIN CORE TEAM SECTION COMPONENT
 // =============================================================================
 
-export default function CoreTeam() {
+export default function CoreTeam({ rows = [coreTeamRow1, coreTeamRow2] }) {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
   const marqueeContainerRef = useRef(null);
@@ -281,22 +281,16 @@ export default function CoreTeam() {
       {/* =================================================================== */}
       <div ref={marqueeContainerRef} className="flex flex-col gap-8 md:gap-12 w-full">
         {/* Row 01: Moves Left ← */}
-        <InteractiveMarqueeRow
-          items={coreTeamRow1}
-          direction="left"
-          speed={0.8}
-          initialOffset={0}
-          rowLabel="Core Team Row 1"
-        />
-
-        {/* Row 02: Moves Right → with Offset */}
-        <InteractiveMarqueeRow
-          items={coreTeamRow2}
-          direction="right"
-          speed={0.8}
-          initialOffset={-180}
-          rowLabel="Core Team Row 2"
-        />
+        {rows.map((items, index) => (
+          <InteractiveMarqueeRow
+            key={`core-team-row-${index + 1}`}
+            items={items}
+            direction={index % 2 === 0 ? "left" : "right"}
+            speed={0.8}
+            initialOffset={index % 2 === 0 ? 0 : -180}
+            rowLabel={`Core Team Row ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

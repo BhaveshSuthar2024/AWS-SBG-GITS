@@ -27,30 +27,100 @@ export const tracks = [
 ];
 
 export const keynoteSpeakers = [
-  { name: "Speaker to be announced", role: "Developer Advocate @ AWS", image: null, linkedin: null },
-  { name: "Speaker to be announced", role: "AWS Community Builder", image: null, linkedin: null },
+  {
+    name: "Aditya Pancholi",
+    role: "Developer Advocate @ AWS",
+    image: "speakers/s1.jpeg",
+    linkedin: null,
+  },
+  {
+    name: "Speaker to be announced",
+    role: "AWS Community Builder",
+    image: null,
+    linkedin: null,
+  },
 ];
 
 export const eventSpeakers = [
-  { name: "Speaker TBA", role: "Solutions Architect", image: null, linkedin: null },
+  {
+    name: "Speaker TBA",
+    role: "Solutions Architect",
+    image: null,
+    linkedin: null,
+  },
   { name: "Speaker TBA", role: "Cloud Engineer", image: null, linkedin: null },
   { name: "Speaker TBA", role: "SRE / Platform", image: null, linkedin: null },
-  { name: "Speaker TBA", role: "AI / ML Engineer", image: null, linkedin: null },
+  {
+    name: "Speaker TBA",
+    role: "AI / ML Engineer",
+    image: null,
+    linkedin: null,
+  },
   { name: "Speaker TBA", role: "Student Builder", image: null, linkedin: null },
   { name: "Speaker TBA", role: "Industry Mentor", image: null, linkedin: null },
 ];
 
 export const schedule = [
-  { time: "08:30 – 09:30", title: "Registration & Breakfast", desc: "Check in at the GITS auditorium foyer and grab refreshments.", type: "registration" },
-  { time: "09:30 – 09:50", title: "Welcome Note", desc: "Opening by AWS Student Builder Club, GITS.", type: "talk" },
-  { time: "09:50 – 10:40", title: "Keynote", desc: "The student path into cloud, community, and real-world AWS.", type: "talk" },
-  { time: "10:50 – 11:35", title: "Technical Talks + Quiz Round 1", desc: "Architecture, IAM, and building on AWS.", type: "quiz" },
-  { time: "11:40 – 12:15", title: "Panel: Campus to Cloud", desc: "Mentors and builders on careers, certifications, and first jobs.", type: "panel" },
-  { time: "12:20 – 13:00", title: "DevOps & AI Track", desc: "From pipelines to Bedrock — practical sessions.", type: "talk" },
-  { time: "13:00 – 14:00", title: "Lunch & Networking", desc: "Meet speakers, sponsors, and fellow builders.", type: "break" },
-  { time: "14:00 – 15:10", title: "Labs & Architecture", desc: "Hands-on labs and cost-aware design.", type: "talk" },
-  { time: "15:15 – 15:50", title: "Closing Panel", desc: "Engineering in the age of AI, from Udaipur outward.", type: "panel" },
-  { time: "15:50 – 16:30", title: "Closing Ceremony", desc: "Awards, contest winners, swag, and group photo.", type: "ceremony" },
+  {
+    time: "08:30 – 09:30",
+    title: "Registration & Breakfast",
+    desc: "Check in at the GITS auditorium foyer and grab refreshments.",
+    type: "registration",
+  },
+  {
+    time: "09:30 – 09:50",
+    title: "Welcome Note",
+    desc: "Opening by AWS Student Builder Club, GITS.",
+    type: "talk",
+  },
+  {
+    time: "09:50 – 10:40",
+    title: "Keynote",
+    desc: "The student path into cloud, community, and real-world AWS.",
+    type: "talk",
+  },
+  {
+    time: "10:50 – 11:35",
+    title: "Technical Talks + Quiz Round 1",
+    desc: "Architecture, IAM, and building on AWS.",
+    type: "quiz",
+  },
+  {
+    time: "11:40 – 12:15",
+    title: "Panel: Campus to Cloud",
+    desc: "Mentors and builders on careers, certifications, and first jobs.",
+    type: "panel",
+  },
+  {
+    time: "12:20 – 13:00",
+    title: "DevOps & AI Track",
+    desc: "From pipelines to Bedrock — practical sessions.",
+    type: "talk",
+  },
+  {
+    time: "13:00 – 14:00",
+    title: "Lunch & Networking",
+    desc: "Meet speakers, sponsors, and fellow builders.",
+    type: "break",
+  },
+  {
+    time: "14:00 – 15:10",
+    title: "Labs & Architecture",
+    desc: "Hands-on labs and cost-aware design.",
+    type: "talk",
+  },
+  {
+    time: "15:15 – 15:50",
+    title: "Closing Panel",
+    desc: "Engineering in the age of AI, from Udaipur outward.",
+    type: "panel",
+  },
+  {
+    time: "15:50 – 16:30",
+    title: "Closing Ceremony",
+    desc: "Awards, contest winners, swag, and group photo.",
+    type: "ceremony",
+  },
 ];
 
 export const sponsors = {
@@ -66,10 +136,30 @@ export const sponsors = {
 
 export const coreTeam = [
   { name: "Club Lead", role: "Community Lead", image: null, linkedin: null },
-  { name: "Technical Lead", role: "Sessions & Labs", image: null, linkedin: null },
-  { name: "Outreach Lead", role: "Speakers & Partners", image: null, linkedin: null },
-  { name: "Operations Lead", role: "Venue & Volunteers", image: null, linkedin: null },
-  { name: "Design Lead", role: "Brand & Experience", image: null, linkedin: null },
+  {
+    name: "Technical Lead",
+    role: "Sessions & Labs",
+    image: null,
+    linkedin: null,
+  },
+  {
+    name: "Outreach Lead",
+    role: "Speakers & Partners",
+    image: null,
+    linkedin: null,
+  },
+  {
+    name: "Operations Lead",
+    role: "Venue & Volunteers",
+    image: null,
+    linkedin: null,
+  },
+  {
+    name: "Design Lead",
+    role: "Brand & Experience",
+    image: null,
+    linkedin: null,
+  },
   { name: "Content Lead", role: "Social & Story", image: null, linkedin: null },
 ];
 

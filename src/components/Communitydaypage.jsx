@@ -27,6 +27,7 @@ import {
   eventInfo,
   stats,
   tracks,
+  coreTeam,
   keynoteSpeakers,
   eventSpeakers,
   schedule,
@@ -34,6 +35,10 @@ import {
   faqs,
 } from "../utils/Communitydaypagedata.js";
 import KonfHubRegistrationWidget from "../utils/KonfHubRegistrationWidget";
+import Speakers from "../utils/CommunityDayPageRedesign/components/Speakers";
+import CoreTeam from "../utils/CommunityDayPageRedesign/components/CoreTeam";
+import Volunteers from "../utils/CommunityDayPageRedesign/components/Volunteers";
+import "../utils/CommunityDayPageRedesign/styles/globals.css";
 import "./Communitydaypage.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,6 +47,8 @@ const sections = [
   ["About", "about"],
   ["Tracks", "tracks"],
   ["Speakers", "speakers"],
+  ["Core Team", "team"],
+  ["Volunteers", "volunteers"],
   ["Schedule", "schedule"],
   ["Sponsors", "sponsors"],
   ["FAQ", "faq"],
@@ -55,6 +62,47 @@ const SCHEDULE_ICONS = {
   break: UtensilsCrossed,
   ceremony: PartyPopper,
 };
+const communityDaySpeakers = [
+  ...keynoteSpeakers.map((speaker) => ({
+    ...speaker,
+    category: "KEYNOTE SPEAKER",
+  })),
+  ...eventSpeakers.map((speaker) => ({
+    ...speaker,
+    category: "SESSION SPEAKER",
+  })),
+].map((speaker, index) => ({
+  ...speaker,
+  number: String(index + 1).padStart(2, "0"),
+  company: "",
+  topic: "Session details will be announced soon.",
+  tags: [],
+  image: null,
+  placeholder: true,
+}));
+const communityCoreTeamRows = [
+  coreTeam.slice(0, 3),
+  coreTeam.slice(3),
+].map((row) =>
+  row.map((member, index) => ({
+    ...member,
+    id: `community-core-${member.name}-${index}`,
+    shortRole: member.role,
+    image: "/assets/speakers/speaker-placeholder.svg",
+  })),
+);
+const communityVolunteerRows = [
+  ["Event volunteer", "Community volunteer", "Event volunteer", "Community volunteer"],
+  ["Community volunteer", "Event volunteer", "Community volunteer", "Event volunteer"],
+  ["Event volunteer", "Community volunteer", "Event volunteer", "Community volunteer"],
+].map((row, rowIndex) =>
+  row.map((name, index) => ({
+    id: `community-volunteer-${rowIndex}-${index}`,
+    name,
+    role: "Names and roles to be announced",
+    image: "/assets/speakers/speaker-placeholder.svg",
+  })),
+);
 
 function EventNav() {
   const [open, setOpen] = useState(false);
@@ -235,124 +283,6 @@ function EventTracks() {
         <div className="track-scroll-note">
           <span>Scroll to explore tracks</span>
           <ArrowDown size={15} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PersonCard({ person, index, featured = false }) {
-  return (
-    <article
-      className={`speaker-card ${featured ? "speaker-card-featured" : ""}`}
-    >
-      <div className="speaker-card-art" aria-hidden="true">
-        <span className="speaker-card-index">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <div className="speaker-arch">
-          <span className="speaker-arch-inner" />
-        </div>
-        <span className="speaker-orbit speaker-orbit-a" />
-        <span className="speaker-orbit speaker-orbit-b" />
-        <span className="speaker-card-note">NAME TO BE ANNOUNCED</span>
-      </div>
-      <div className="speaker-card-copy">
-        <p>{featured ? "KEYNOTE SPEAKER" : "SESSION SPEAKER"}</p>
-        <h3>{person.name}</h3>
-        <span>{person.role}</span>
-      </div>
-    </article>
-  );
-}
-
-function SpeakerShowcase() {
-  const railRef = useRef(null);
-  useEffect(() => {
-    const rail = railRef.current;
-    if (!rail || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      return;
-    const section = rail.closest(".speakers-section");
-    const ctx = gsap.context(() => {
-      if (window.matchMedia("(min-width: 900px)").matches) {
-        const viewport = rail.parentElement;
-        const distance = () =>
-          Math.max(0, rail.scrollWidth - viewport.clientWidth);
-        gsap.to(rail, {
-          x: () => -distance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: viewport,
-            start: "top top+=170",
-            end: () => `+=${distance()}`,
-            pin: viewport,
-            scrub: 0.9,
-            invalidateOnRefresh: true,
-          },
-        });
-      }
-      gsap.utils
-        .toArray(".keynote-grid .speaker-card", section)
-        .forEach((card, i) =>
-          gsap.fromTo(
-            card,
-            { y: 24 + i * 8, rotateY: i ? 3 : -3, z: -25 },
-            {
-              y: 0,
-              rotateY: 0,
-              z: 14,
-              ease: "none",
-              scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                end: "top 48%",
-                scrub: true,
-              },
-            },
-          ),
-        );
-    }, section);
-    return () => ctx.revert();
-  }, []);
-  return (
-    <section className="speakers-section event-section-cream" id="speakers">
-      <div className="speakers-inner">
-        <SectionHeading
-          number="03 / 06"
-          eyebrow="Voices from the cloud"
-          title="People who build what’s next."
-          subtitle="Names will be announced here as speakers confirm."
-        />
-        <div className="keynote-heading">
-          <span>01 — KEYNOTE SPEAKERS</span>
-          <span>{keynoteSpeakers.length} FEATURED</span>
-        </div>
-        <div className="keynote-grid">
-          {keynoteSpeakers.map((person, i) => (
-            <PersonCard
-              key={`${person.name}-${i}`}
-              person={person}
-              index={i}
-              featured
-            />
-          ))}
-        </div>
-        <div className="speaker-rail-heading">
-          <span>02 — SESSION SPEAKERS</span>
-          <span>
-            SCROLL TO MOVE <ArrowRight size={14} />
-          </span>
-        </div>
-        <div className="speaker-rail-window">
-          <div className="speaker-rail" ref={railRef}>
-            {eventSpeakers.map((person, i) => (
-              <PersonCard
-                key={`${person.name}-${i}`}
-                person={person}
-                index={i}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -676,7 +606,14 @@ export default function CommunityDayPage() {
         </section>
 
         <EventTracks />
-        <SpeakerShowcase />
+        <div className="community-day-redesign cd-speakers-theme cd-community-sections">
+          <Speakers speakers={communityDaySpeakers} />
+          <CoreTeam rows={communityCoreTeamRows} />
+          <Volunteers
+            rows={communityVolunteerRows}
+            summary="VOLUNTEER DETAILS WILL BE ANNOUNCED SOON"
+          />
+        </div>
 
         <section className="schedule-section event-section-night" id="schedule">
           <div className="schedule-inner">
