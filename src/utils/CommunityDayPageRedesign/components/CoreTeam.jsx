@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { coreTeamRow1, coreTeamRow2 } from '../data/team';
+import { coreTeamRow1, coreTeamRow2 } from '../../communityDayData';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -145,14 +145,16 @@ function InteractiveMarqueeRow({
             >
               {/* 4:5 Portrait Image Container */}
               <div className="team-image-container">
-                <img
-                  src={member.image}
-                  alt={`${member.name}, AWS Community Day Udaipur Core Team`}
-                  loading={idx < 4 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  className="team-portrait-img"
-                  draggable="false"
-                />
+                {member.image && (
+                  <img
+                    src={member.image}
+                    alt={`${member.name}, AWS Community Day Udaipur Core Team`}
+                    loading={idx < 4 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    className="team-portrait-img"
+                    draggable="false"
+                  />
+                )}
 
                 {/* Ambient dark edge vignette */}
                 <div className="team-image-vignette" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { eventData } from '../data/event';
+import { eventData } from '../../communityDayData';
 import { MapPin, Navigation2, ArrowUpRight, Plane, Train } from 'lucide-react';
 
 export default function Venue() {

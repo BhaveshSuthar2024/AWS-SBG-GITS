@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Award, Briefcase, Cpu, Sparkles } from "lucide-react";
-import { coreTeamMembers, teamBands } from "../utils/coreTeamData";
+import { coreTeamMembers, teamBands } from "../utils/homePageData";
 import "./CoreTeam.css";
 
 function ProfileModal({ member, onClose }) {

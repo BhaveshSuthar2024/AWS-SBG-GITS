@@ -11,6 +11,6 @@ export { default as EventChips, chipsForEvent } from './EventChips';
 export { default as EventProgress } from './EventProgress';
 export { default as RegisterButton } from './RegisterButton';
 export { default as EventEmptyState } from './EventEmptyState';
-export { sampleEvents } from './eventsData';
+export { sampleEvents } from '../homePageData';
 export { useCountdown } from './useCountdown';
 export { usePrefersReducedMotion } from './usePrefersReducedMotion';

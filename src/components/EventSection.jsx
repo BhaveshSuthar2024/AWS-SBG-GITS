@@ -21,7 +21,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroEvent from "../utils/UpcomingEvents/HeroEvent";
 import SecondaryEvent from "../utils/UpcomingEvents/SecondaryEvent";
 import EventEmptyState from "../utils/UpcomingEvents/EventEmptyState";
-import { sampleEvents } from "../utils/UpcomingEvents/eventsData";
+import { sampleEvents } from "../utils/homePageData";
 import { usePrefersReducedMotion } from "../customHooks/usePrefersReducedMotion";
 import "./EventSection.css";
 

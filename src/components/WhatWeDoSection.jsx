@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { whatWeDoEvents } from "../utils/homePageData";
 import Timeline from "../utils/WhatweDo/Timeline";
-import defaultEvents from "../utils/WhatweDo/whatWeDoEvents";
 import "./WhatWeDo.css";
 
 if (typeof window !== "undefined") {
@@ -25,7 +25,7 @@ if (typeof window !== "undefined") {
 
 const EASE = [0.16, 1, 0.3, 1];
 
-export default function WhatWeDoSection({ events = defaultEvents }) {
+export default function WhatWeDoSection({ events = whatWeDoEvents }) {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const revealed = useRef(false);

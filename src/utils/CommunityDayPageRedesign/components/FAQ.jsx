@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { faqData } from '../data/faq';
+import { faqData } from '../../communityDayData';
 import { Plus, Minus } from 'lucide-react';
 
 export default function FAQ() {

@@ -33,7 +33,7 @@ import {
   schedule,
   sponsors,
   faqs,
-} from "../utils/Communitydaypagedata.js";
+} from "../utils/communityDayData.js";
 import KonfHubRegistrationWidget from "../utils/KonfHubRegistrationWidget";
 import Speakers from "../utils/CommunityDayPageRedesign/components/Speakers";
 import CoreTeam from "../utils/CommunityDayPageRedesign/components/CoreTeam";
@@ -77,7 +77,9 @@ const communityDaySpeakers = [
   company: "",
   topic: "Session details will be announced soon.",
   tags: [],
-  image: null,
+  image: speaker.image
+    ? `/${speaker.image.replace(/^\/+/, "")}`
+    : "/assets/speakers/speaker-placeholder.svg",
   placeholder: true,
 }));
 const communityCoreTeamRows = [
@@ -88,7 +90,6 @@ const communityCoreTeamRows = [
     ...member,
     id: `community-core-${member.name}-${index}`,
     shortRole: member.role,
-    image: "/assets/speakers/speaker-placeholder.svg",
   })),
 );
 const communityVolunteerRows = [

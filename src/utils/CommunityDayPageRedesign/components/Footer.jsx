@@ -1,5 +1,5 @@
 import React from 'react';
-import { eventData } from '../data/event';
+import { eventData } from '../../communityDayData';
 import { ArrowUp, Heart } from 'lucide-react';
 
 export default function Footer() {

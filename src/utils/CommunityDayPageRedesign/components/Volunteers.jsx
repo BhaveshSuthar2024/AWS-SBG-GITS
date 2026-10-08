@@ -1,7 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { volunteersRow1, volunteersRow2, volunteersRow3 } from '../data/volunteers';
+import {
+  volunteersRow1,
+  volunteersRow2,
+  volunteersRow3,
+} from '../../communityDayData';
 
 gsap.registerPlugin(ScrollTrigger);
 

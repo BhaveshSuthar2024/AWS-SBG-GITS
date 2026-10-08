@@ -1,0 +1,678 @@
+// Current Community Day page content
+export const eventInfo = {
+  title: "AWS Student Community Day",
+  tagline:
+    "From the dunes of Udaipur to the cloud — students, builders, and professionals gathering at GITS.",
+  date: "Date to be announced",
+  time: "09:00 AM – 5:00 PM IST",
+  location: "Geetanjali Institute of Technical Studies (GITS)",
+  venue: "Main Auditorium & Innovation Block, Dabok, Udaipur, Rajasthan",
+  city: "Udaipur, Rajasthan",
+  college: "Geetanjali Institute of Technical Studies",
+};
+
+export const stats = [
+  { label: "Expected attendees", value: 400, suffix: "+" },
+  { label: "Speakers", value: 12, suffix: "+" },
+  { label: "Sessions", value: 10, suffix: "" },
+  { label: "Hours of cloud", value: 8, suffix: "+" },
+];
+
+export const tracks = [
+  "Cloud Native / DevOps",
+  "AI / ML on AWS",
+  "Architecture & Security",
+  "Student Builders",
+  "Community & Career",
+  "Hands-on Labs",
+];
+
+export const keynoteSpeakers = [
+  {
+    name: "Aditya Pancholi",
+    role: "Developer Advocate @ AWS",
+    image: "/speakers/s1.jpeg",
+    linkedin: null,
+  },
+  {
+    name: "Speaker to be announced",
+    role: "AWS Community Builder",
+    image: null,
+    linkedin: null,
+  },
+];
+
+export const eventSpeakers = [
+  {
+    name: "Speaker TBA",
+    role: "Solutions Architect",
+    image: null,
+    linkedin: null,
+  },
+  { name: "Speaker TBA", role: "Cloud Engineer", image: null, linkedin: null },
+  { name: "Speaker TBA", role: "SRE / Platform", image: null, linkedin: null },
+  {
+    name: "Speaker TBA",
+    role: "AI / ML Engineer",
+    image: null,
+    linkedin: null,
+  },
+  { name: "Speaker TBA", role: "Student Builder", image: null, linkedin: null },
+  { name: "Speaker TBA", role: "Industry Mentor", image: null, linkedin: null },
+];
+
+export const schedule = [
+  {
+    time: "08:30 – 09:30",
+    title: "Registration & Breakfast",
+    desc: "Check in at the GITS auditorium foyer and grab refreshments.",
+    type: "registration",
+  },
+  {
+    time: "09:30 – 09:50",
+    title: "Welcome Note",
+    desc: "Opening by AWS Student Builder Club, GITS.",
+    type: "talk",
+  },
+  {
+    time: "09:50 – 10:40",
+    title: "Keynote",
+    desc: "The student path into cloud, community, and real-world AWS.",
+    type: "talk",
+  },
+  {
+    time: "10:50 – 11:35",
+    title: "Technical Talks + Quiz Round 1",
+    desc: "Architecture, IAM, and building on AWS.",
+    type: "quiz",
+  },
+  {
+    time: "11:40 – 12:15",
+    title: "Panel: Campus to Cloud",
+    desc: "Mentors and builders on careers, certifications, and first jobs.",
+    type: "panel",
+  },
+  {
+    time: "12:20 – 13:00",
+    title: "DevOps & AI Track",
+    desc: "From pipelines to Bedrock — practical sessions.",
+    type: "talk",
+  },
+  {
+    time: "13:00 – 14:00",
+    title: "Lunch & Networking",
+    desc: "Meet speakers, sponsors, and fellow builders.",
+    type: "break",
+  },
+  {
+    time: "14:00 – 15:10",
+    title: "Labs & Architecture",
+    desc: "Hands-on labs and cost-aware design.",
+    type: "talk",
+  },
+  {
+    time: "15:15 – 15:50",
+    title: "Closing Panel",
+    desc: "Engineering in the age of AI, from Udaipur outward.",
+    type: "panel",
+  },
+  {
+    time: "15:50 – 16:30",
+    title: "Closing Ceremony",
+    desc: "Awards, contest winners, swag, and group photo.",
+    type: "ceremony",
+  },
+];
+
+export const sponsors = {
+  platinum: [{ name: "AWS" }],
+  gold: [{ name: "Sponsor TBA" }],
+  community: [
+    { name: "AWS Student Builder Club, GITS" },
+    { name: "Geetanjali Institute of Technical Studies" },
+    { name: "Community Partner TBA" },
+    { name: "Community Partner TBA" },
+  ],
+};
+
+export const coreTeam = [
+  {
+    name: "Manish Sahu",
+    role: "SBD Captain",
+    image: "/team/t1.jpeg",
+    linkedin: null,
+  },
+  {
+    name: "Technical Lead",
+    role: "Sessions & Labs",
+    image: null,
+    linkedin: null,
+  },
+  {
+    name: "Outreach Lead",
+    role: "Speakers & Partners",
+    image: null,
+    linkedin: null,
+  },
+  {
+    name: "Operations Lead",
+    role: "Venue & Volunteers",
+    image: null,
+    linkedin: null,
+  },
+  {
+    name: "Design Lead",
+    role: "Brand & Experience",
+    image: null,
+    linkedin: null,
+  },
+  { name: "Content Lead", role: "Social & Story", image: null, linkedin: null },
+];
+
+export const faqs = [
+  {
+    q: "Who can attend AWS Student Community Day at GITS?",
+    a: "Students from GITS and other colleges, plus early-career builders interested in AWS, cloud, and community. Registration is required.",
+  },
+  {
+    q: "Where is the venue and how do I reach it?",
+    a: "Geetanjali Institute of Technical Studies, Dabok, Udaipur, Rajasthan. Sessions run from the Main Auditorium with labs in the Innovation Block. Campus directions will be emailed to registered attendees.",
+  },
+  {
+    q: "Is this a paid event?",
+    a: "Community Day is designed as a free student event, subject to registration capacity. Any change will be announced on this page and by email.",
+  },
+  {
+    q: "Will I get a certificate or swag?",
+    a: "Attendees who check in receive a participation certificate. Swag, credits, and contest prizes are limited and announced during the closing ceremony.",
+  },
+  {
+    q: "Who organizes this?",
+    a: "AWS Student Builder Club at Geetanjali Institute of Technical Studies, with support from faculty mentors, volunteers, and community partners.",
+  },
+  {
+    q: "How do I ask something else?",
+    a: "Use the Contact section on the club site or write to the club email. We typically reply within a couple of days.",
+  },
+];
+
+// event
+export const eventData = {
+  name: "AWS Community Day",
+  edition: "Udaipur '26",
+  year: "2026",
+  date: "February 28, 2026",
+  dateFormatted: "FEB 28, 2026",
+  day: "Saturday",
+  venue: {
+    name: "Geetanjali Institute of Technical Studies",
+    shortName: "GITS, Udaipur",
+    address: "Airport Road, Dabok, Udaipur, Rajasthan 313022",
+    city: "Udaipur",
+    state: "Rajasthan",
+    country: "India",
+    coordinates: "24.6174° N, 73.8824° E",
+    mapUrl:
+      "https://maps.google.com/?q=Geetanjali+Institute+of+Technical+Studies+Udaipur",
+  },
+  tagline: "WHERE CLOUD MEETS COMMUNITY.",
+  subHeadline: "SAME CITY • NEW PERSPECTIVES • BIGGER IDEAS",
+  cfpUrl: "https://sessionize.com/aws-community-day-udaipur-2026",
+  stats: [
+    { value: "1,200+", label: "Cloud Builders & Architects" },
+    { value: "24+", label: "Technical Deep Dives" },
+    { value: "3", label: "Parallel Tracks" },
+    { value: "100%", label: "Community Driven" },
+  ],
+  socials: {
+    twitter: "https://x.com/awsugudaipur",
+    linkedin: "https://linkedin.com/company/aws-user-group-udaipur",
+    discord: "https://discord.gg/awsugindia",
+    github: "https://github.com/aws-community-udaipur",
+  },
+};
+
+// faq
+export const faqData = [
+  {
+    question: "What is AWS Community Day Udaipur?",
+    answer:
+      "AWS Community Day Udaipur 2026 is a premier, community-organized technical conference organized by passionate AWS User Group leaders, cloud architects, and builders. It brings together industry luminaries, AWS heroes, researchers, and students for in-depth technical keynotes, architecture breakdowns, and peer networking.",
+  },
+  {
+    question: "Where and when is the conference taking place?",
+    answer:
+      "The event will be hosted in-person on Saturday, February 28, 2026, at the Geetanjali Institute of Technical Studies (GITS), Airport Road, Dabok, Udaipur, Rajasthan. The campus is conveniently situated near Udaipur Airport (UDR).",
+  },
+  {
+    question: "How do I register and receive my ticket?",
+    answer:
+      "Registration is hosted exclusively through our official ticketing partner KonfHub. Simply click the 'Register on KonfHub' button anywhere on this page to select your ticket tier (Professional, Student, or Diversity Pass). Your QR-code badge will be emailed immediately upon confirmation.",
+  },
+  {
+    question: "Are student and diversity discounts available?",
+    answer:
+      "Yes. AWS User Group Udaipur is deeply committed to empowering aspiring builders. A limited allotment of subsidized student passes is available on KonfHub upon verification of a valid academic ID.",
+  },
+  {
+    question: "Will lunch, refreshments, and conference swag be provided?",
+    answer:
+      "All confirmed attendees receive full access to the keynote and parallel tracks, limited-edition AWS Community Day Udaipur merchandise (hoodie, t-shirt, stickers, badge), artisanal morning coffee, an authentic Rajasthani lunch, and evening networking high-tea.",
+  },
+  {
+    question: "Can I submit a talk or workshop proposal?",
+    answer:
+      "Our Call for Proposals (CFP) is open via Sessionize until January 15, 2026. We welcome technical talks on Cloud Architecture, GenAI/Bedrock, Kubernetes, Serverless, DevSecOps, and real-world scale stories.",
+  },
+];
+
+// schedule
+export const scheduleData = [
+  {
+    time: "08:30 — 09:30",
+    slot: "CHECK-IN",
+    title: "Registration, Morning Brew & Community Assembly",
+    speaker: "Community Organizers",
+    track: "Main Foyer",
+    description:
+      "Badge pickup, welcome swag distribution, and morning coffee with fellow cloud builders against the backdrop of the Aravalli hills.",
+  },
+  {
+    time: "09:30 — 10:30",
+    slot: "KEYNOTE",
+    title:
+      "The Cloud Frontier: From Serverless Primitives to Autonomous Intelligence",
+    speaker: "AWS Leadership & Community Heroes",
+    track: "Auditorium Prime",
+    description:
+      "Opening visionary keynote exploring the convergence of hyper-scale cloud infrastructure, custom silicon, and generative reasoning agents.",
+  },
+  {
+    time: "10:45 — 11:45",
+    slot: "DEEP DIVE 01",
+    title: "Architecting Resilient Foundation Models at Hyper-Scale",
+    speaker: "Dr. Aisha Sharma",
+    track: "Track A — AI & Data",
+    description:
+      "Scaling distributed inference clusters, optimizing memory footprints, and structuring high-throughput Bedrock pipelines.",
+  },
+  {
+    time: "11:45 — 12:45",
+    slot: "DEEP DIVE 02",
+    title: "Zero-Latency Event-Driven Topologies on AWS",
+    speaker: "Vikramaditya Rathore",
+    track: "Track B — Cloud Architecture",
+    description:
+      "Deep dive into EventBridge, Kinesis, and Lambda internals for mission-critical, ultra-low latency transaction pipelines.",
+  },
+  {
+    time: "12:45 — 14:00",
+    slot: "LUNCH & EXPO",
+    title: "Rajasthani Culinary Experience & Sponsor Tech Pavilion",
+    speaker: "GITS Dining Lawn",
+    track: "Networking Arena",
+    description:
+      "Authentic Mewari lunch, live architecture review clinics, sponsor booths, and unstructured community connection.",
+  },
+  {
+    time: "14:00 — 15:00",
+    slot: "DEEP DIVE 03",
+    title: "Sovereign Cloud, Graviton4 & Next-Gen Edge Compute",
+    speaker: "Elena Rostova",
+    track: "Track A — Systems & Silicon",
+    description:
+      "Unlocking up to 40% price-performance advantages using Graviton4 architectures and localized edge points of presence.",
+  },
+  {
+    time: "15:15 — 16:30",
+    slot: "WORKSHOPS",
+    title:
+      "Hands-on Jam: Building Autonomous AI Agents with LangGraph & Bedrock",
+    speaker: "Interactive Lab Mentors",
+    track: "Lab 1 & Lab 2",
+    description:
+      "Bring your laptop: live coding session deploying self-correcting agents with sandbox tool-calling on AWS infrastructure.",
+  },
+  {
+    time: "16:45 — 17:45",
+    slot: "PANEL & CLOSING",
+    title: "The Future of Cloud Engineering in Bharat & Community Awards",
+    speaker: "All Speakers & Organizers",
+    track: "Auditorium Prime",
+    description:
+      "Community panel discussion, lightning demos, volunteer appreciation, and closing celebratory announcements.",
+  },
+];
+
+// speakers
+export const speakersData = [
+  {
+    id: 1,
+    number: "01",
+    name: "Dr. Aisha Sharma",
+    role: "Principal AI Architect & AWS Hero",
+    company: "Amazon Web Services",
+    topic: "Architecting Resilient Foundation Models at Hyper-Scale",
+    image: "/assets/speakers/speaker-01.jpg",
+    tags: ["GenAI", "AWS Bedrock", "Distributed Systems"],
+  },
+  {
+    id: 2,
+    number: "02",
+    name: "Vikramaditya Rathore",
+    role: "Head of Infrastructure Engineering",
+    company: "NextGen Cloud Topologies",
+    topic: "Zero-Latency Event-Driven Architectures on AWS",
+    image: "/assets/speakers/speaker-02.jpg",
+    tags: ["Serverless", "EventBridge", "High Throughput"],
+  },
+  {
+    id: 3,
+    number: "03",
+    name: "Elena Rostova",
+    role: "VP of Cloud Platform & Systems",
+    company: "Apex Global Compute",
+    topic: "Sovereign Cloud, Graviton4 & Next-Gen Edge Compute",
+    image: "/assets/speakers/speaker-03.jpg",
+    tags: ["Graviton4", "Confidential Compute", "Silicon"],
+  },
+  {
+    id: 4,
+    number: "04",
+    name: "Rohan Mehta",
+    role: "Senior Director of Applied AI",
+    company: "Frontier Intelligence",
+    topic: "Autonomous Multi-Agent Swarms on Cloud Infrastructure",
+    image: "/assets/speakers/speaker-04.jpg",
+    tags: ["Agentic AI", "Observability", "DevOps"],
+  },
+  {
+    id: 5,
+    number: "05",
+    name: "Maya Patel",
+    role: "Chief Serverless Architect",
+    company: "Serverless Studio",
+    topic: "Hyperscale Multi-Tenant SaaS with DynamoDB Global Tables",
+    image: "/assets/speakers/speaker-05.jpg",
+    tags: ["SaaS", "DynamoDB", "Lambda"],
+  },
+  {
+    id: 6,
+    number: "06",
+    name: "Arjun Singhania",
+    role: "Principal Security Architect",
+    company: "Cloud Shield Labs",
+    topic: "Zero Trust Security Postures with AWS IAM Identity Center",
+    image: "/assets/speakers/speaker-06.jpg",
+    tags: ["Security", "IAM", "Compliance"],
+  },
+];
+
+// sponsors
+export const sponsorsData = [
+  {
+    tier: "TITLE SPONSOR",
+    sponsors: [
+      {
+        name: "Amazon Web Services",
+        tagline: "Cloud Computing Services",
+        category: "Cloud Leader",
+        logoType: "aws",
+        url: "https://aws.amazon.com",
+      },
+    ],
+  },
+  {
+    tier: "ACADEMIC & VENUE PARTNER",
+    sponsors: [
+      {
+        name: "Geetanjali Institute of Technical Studies",
+        tagline: "Excellence in Engineering & Research",
+        category: "Venue Host",
+        logoType: "gits",
+        url: "https://www.gits.ac.in",
+      },
+    ],
+  },
+  {
+    tier: "PLATINUM PARTNERS",
+    sponsors: [
+      {
+        name: "MongoDB",
+        tagline: "The Developer Data Platform",
+        category: "Database & Cloud Data",
+        logoType: "mongodb",
+        url: "https://www.mongodb.com",
+      },
+      {
+        name: "GitHub",
+        tagline: "Where the world builds software",
+        category: "Developer Platform",
+        logoType: "github",
+        url: "https://github.com",
+      },
+      {
+        name: "Cloudflare",
+        tagline: "Connecting and protecting digital infrastructure",
+        category: "Global Network & Security",
+        logoType: "cloudflare",
+        url: "https://cloudflare.com",
+      },
+    ],
+  },
+  {
+    tier: "COMMUNITY & ECOSYSTEM PARTNERS",
+    sponsors: [
+      {
+        name: "KonfHub",
+        tagline: "Official Ticketing Partner",
+        category: "Ticketing & Experience",
+        logoType: "konfhub",
+        url: "https://konfhub.com",
+      },
+      {
+        name: "AWS User Group India",
+        tagline: "National Cloud Builder Community",
+        category: "Community Network",
+        logoType: "awsug",
+        url: "https://aws.amazon.com/developer/community/usergroups/",
+      },
+      {
+        name: "Docker",
+        tagline: "Accelerating containerized workflows",
+        category: "DevOps Tooling",
+        logoType: "docker",
+        url: "https://docker.com",
+      },
+    ],
+  },
+];
+
+// team
+// AWS Community Day Udaipur '26 — Core Team Members Data
+// Exactly 7 Core Team Members across 2 editorial marquee rows
+
+export const coreTeamRow1 = [
+  {
+    id: "ct-01",
+    name: "Sohail Ansari",
+    role: "Lead Organizer & Community Lead",
+    shortRole: "Lead Organizer",
+    track: "AWS User Group Udaipur",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    bio: "AWS Community Builder & Organizer championing cloud literacy and developer empowerment across Rajasthan.",
+  },
+  {
+    id: "ct-02",
+    name: "Dr. Naveen Choudhary",
+    role: "Academic & Keynote Advisor",
+    shortRole: "Academic Advisor",
+    track: "Institutional Relations",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    bio: "Dean & Head of Computer Science bridging cutting-edge enterprise cloud architectures with engineering academia.",
+  },
+  {
+    id: "ct-03",
+    name: "Aditi Saxena",
+    role: "Speaker Relations & Content Lead",
+    shortRole: "Speaker Relations",
+    track: "Program Curation",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    bio: "Curating world-class keynotes, deep-dive tech talks, and cloud security panels from global AWS experts.",
+  },
+  {
+    id: "ct-04",
+    name: "Harshvardhan Singh",
+    role: "Technical Architecture Lead",
+    shortRole: "Tech Architecture",
+    track: "Cloud Infrastructure",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+    bio: "Solutions architect specializing in multi-region serverless deployments, Kubernetes, and generative AI pipelines.",
+  },
+];
+
+export const coreTeamRow2 = [
+  {
+    id: "ct-05",
+    name: "Riya Trivedi",
+    role: "Experience & Creative Design Lead",
+    shortRole: "Design & Experience",
+    track: "Brand & Identity",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+    bio: "Crafting the cinematic visual language, ambient stages, spatial installations, and attendee journey.",
+  },
+  {
+    id: "ct-06",
+    name: "Amit Kumar Sharma",
+    role: "Cloud Operations & Security Lead",
+    shortRole: "Cloud Ops & Security",
+    track: "DevOps & Reliability",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
+    bio: "Ensuring zero-downtime event streaming, high-throughput network fabrics, and live workshop cloud sandboxes.",
+  },
+  {
+    id: "ct-07",
+    name: "Bhavya Mehta",
+    role: "Sponsorships & Strategic Partnerships",
+    shortRole: "Partnerships Lead",
+    track: "Ecosystem Growth",
+    image:
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80",
+    bio: "Connecting cloud providers, SaaS unicorns, and regional startups to empower developers across tier-2 hubs.",
+  },
+];
+
+// volunteers
+// AWS Community Day Udaipur '26 — Volunteers Data
+// Exactly 12 Community Volunteers across 3 moving community wall rows
+
+export const volunteersRow1 = [
+  {
+    id: "vol-01",
+    name: "Priya Sharma",
+    role: "Stage Operations",
+    track: "Main Auditorium",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-02",
+    name: "Aman Mathur",
+    role: "Registration Desk",
+    track: "Welcome Hub",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-03",
+    name: "Kavya Singhania",
+    role: "Speaker Concierge",
+    track: "VIP Lounge",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-04",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+];
+
+export const volunteersRow2 = [
+  {
+    id: "vol-05",
+    name: "Sneha Chundawat",
+    role: "Social Media & Live",
+    track: "Dispatch Studio",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-06",
+    name: "Rohan Shrimali",
+    role: "Sponsor Pavilion",
+    track: "Expo Hall",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-07",
+    name: "Meera Solanki",
+    role: "Community Experience",
+    track: "Attendee Hospitality",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-08",
+    name: "Yashwardhan Sisodia",
+    role: "Track Coordinator",
+    track: "Architect Arena",
+    image:
+      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+];
+
+export const volunteersRow3 = [
+  {
+    id: "vol-09",
+    name: "Isha Babel",
+    role: "Swag & Gift Hub",
+    track: "Community Central",
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-10",
+    name: "Nikhil Ranawat",
+    role: "AV & Stage Console",
+    track: "Track 1 Console",
+    image:
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-11",
+    name: "Divya Nagda",
+    role: "Student Ambassador",
+    track: "University Outreach",
+    image:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+  {
+    id: "vol-12",
+    name: "Rahul Sukhwal",
+    role: "Builder Lab Support",
+    track: "Hands-on Labs",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+  },
+];

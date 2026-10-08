@@ -5,7 +5,7 @@ import {
   galleryEvents,
   GALLERY_CATEGORIES,
   filterGallery,
-} from "../utils/galleryData";
+} from "../utils/homePageData";
 import GalleryGrid from "./GalleryGrid";
 import ImageLightbox from "./ImageLightbox";
 import "./Gallery.css";

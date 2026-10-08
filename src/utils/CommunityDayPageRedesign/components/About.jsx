@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { eventData } from '../data/event';
+import { eventData } from '../../communityDayData';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 

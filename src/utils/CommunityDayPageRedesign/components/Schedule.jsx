@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { scheduleData } from '../data/schedule';
+import { scheduleData } from '../../communityDayData';
 import { Clock, MapPin, ChevronRight } from 'lucide-react';
 
 export default function Schedule() {

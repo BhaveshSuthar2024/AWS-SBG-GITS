@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { featuredGalleryPhotos } from "../utils/galleryData";
+import { featuredGalleryPhotos } from "../utils/homePageData";
 import GalleryGrid from "./GalleryGrid";
 import ImageLightbox from "./ImageLightbox";
 import "./Gallery.css";

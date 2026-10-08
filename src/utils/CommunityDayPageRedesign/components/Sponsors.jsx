@@ -1,5 +1,5 @@
 import React from 'react';
-import { sponsorsData } from '../data/sponsors';
+import { sponsorsData } from '../../communityDayData';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function Sponsors() {

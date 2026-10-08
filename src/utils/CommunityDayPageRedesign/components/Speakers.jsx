@@ -3,7 +3,7 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { speakersData } from "../data/speakers";
+import { speakersData } from "../../communityDayData";
 import {
   speakerVertexShader,
   speakerFragmentShader,
@@ -547,7 +547,7 @@ export default function Speakers({ speakers = speakersData }) {
                         position === 1 ? "is-active" : ""
                       }`}
                     >
-                      <img src="" alt="" />
+                      <img src={speakers[speakerIndex].image} alt="" />
                     </div>
                   );
                 },
