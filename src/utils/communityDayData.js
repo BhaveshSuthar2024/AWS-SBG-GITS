@@ -143,20 +143,20 @@ export const coreTeam = [
     linkedin: null,
   },
   {
+    name: "Bhavesh Suthar",
+    role: "Tech Lead",
+    image: "/team/t3.png",
+    linkedin: null,
+  },
+  {
+    name: "Sohail Ansari",
+    role: "Tech Lead",
+    image: "/team/t2.jpeg",
+    linkedin: null,
+  },
+  {
     name: "Technical Lead",
     role: "Sessions & Labs",
-    image: null,
-    linkedin: null,
-  },
-  {
-    name: "Outreach Lead",
-    role: "Speakers & Partners",
-    image: null,
-    linkedin: null,
-  },
-  {
-    name: "Operations Lead",
-    role: "Venue & Volunteers",
     image: null,
     linkedin: null,
   },
