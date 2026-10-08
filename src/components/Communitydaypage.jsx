@@ -80,7 +80,7 @@ const communityDaySpeakers = [
   image: speaker.image
     ? `/${speaker.image.replace(/^\/+/, "")}`
     : "/assets/speakers/speaker-placeholder.svg",
-  placeholder: true,
+  placeholder: !speaker.image,
 }));
 const communityCoreTeamRows = [
   coreTeam.slice(0, 3),

@@ -32,13 +32,13 @@ export const keynoteSpeakers = [
     name: "Aditya Pancholi",
     role: "Developer Advocate @ AWS",
     image: "/speakers/s1.jpeg",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/pancholi-aditya/",
   },
   {
-    name: "Speaker to be announced",
+    name: "Ashwin Sharma",
     role: "AWS Community Builder",
-    image: null,
-    linkedin: null,
+    image: "/speakers/s2.jpeg",
+    linkedin: "https://www.linkedin.com/in/iamashwins/",
   },
 ];
 
