@@ -1233,6 +1233,25 @@ button {
   line-height: 1.3;
 }
 
+.team-member-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-top: 8px;
+  color: #ffae42;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.team-member-linkedin:hover {
+  color: #ffffff;
+}
+
 /* =============================================================================
    13. VOLUNTEERS SECTION (COMMUNITY WALL)
    ============================================================================= */

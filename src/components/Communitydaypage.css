@@ -2079,6 +2079,39 @@
   height: 100%;
   object-fit: cover;
 }
+.cd-page .cd-speakers-theme .community-speakers-placeholder-card.is-placeholder {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(243, 238, 230, 0.14);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255, 153, 0, 0.14), transparent 55%),
+    #101925;
+}
+.cd-page .cd-speakers-theme .community-speakers-placeholder-card.is-placeholder span {
+  color: rgba(243, 238, 230, 0.48);
+  font: 300 clamp(1.5rem, 4vw, 3rem) / 1 "Space Grotesk", sans-serif;
+}
+.community-speaker-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: #ffae42;
+  font: 500 10px/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+.community-speaker-linkedin:hover,
+.cd-page .cd-speakers-theme .team-member-linkedin:hover {
+  color: #fff;
+}
+.community-speaker-linkedin:focus-visible,
+.cd-page .cd-speakers-theme .team-member-linkedin:focus-visible {
+  outline: 2px solid #ffae42;
+  outline-offset: 4px;
+}
 .cd-page .cd-speakers-theme .community-speakers-vignette {
   background-image: linear-gradient(
     to right,

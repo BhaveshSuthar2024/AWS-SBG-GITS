@@ -20,7 +20,7 @@ export const stats = [
 
 export const tracks = [
   "Cloud Native / DevOps",
-  "AI / ML on AWS",
+  "FinOps",
   "Architecture & Security",
   "Student Builders",
   "Community & Career",
@@ -44,10 +44,10 @@ export const keynoteSpeakers = [
 
 export const eventSpeakers = [
   {
-    name: "Speaker TBA",
-    role: "Solutions Architect",
-    image: null,
-    linkedin: null,
+    name: "Hardik maheshwari",
+    role: "Cloud & Infrastructure Engineer",
+    image: "/speakers/s3.jpeg",
+    linkedin: "https://www.linkedin.com/in/hardikmaheshwarii/",
   },
   { name: "Speaker TBA", role: "Cloud Engineer", image: null, linkedin: null },
   { name: "Speaker TBA", role: "SRE / Platform", image: null, linkedin: null },
@@ -138,35 +138,47 @@ export const sponsors = {
 export const coreTeam = [
   {
     name: "Manish Sahu",
-    role: "SBD Captain",
+    role: "Captain, SBG",
     image: "/team/t1.jpeg",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/manish-sahu99/",
+  },
+  {
+    name: "Mahak Rahi",
+    role: "Vice Captain, SBG",
+    image: "team/t4.jpeg",
+    linkedin: "https://www.linkedin.com/in/mahak-rahi/",
   },
   {
     name: "Bhavesh Suthar",
     role: "Tech Lead",
     image: "/team/t3.png",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/bhavesh-suthar-048587332/",
   },
   {
     name: "Sohail Ansari",
     role: "Tech Lead",
     image: "/team/t2.jpeg",
-    linkedin: null,
+    linkedin: "https://www.linkedin.com/in/sohailansari163/",
+  },
+
+  {
+    name: "Daksh Soni",
+    role: "Non Tech Lead",
+    image: "team/t5.jpeg",
+    linkedin: "https://www.linkedin.com/in/daksh-soni-2945a4328/",
   },
   {
-    name: "Technical Lead",
-    role: "Sessions & Labs",
-    image: null,
-    linkedin: null,
+    name: "Gunjal Gupta",
+    role: "Non Tech Lead",
+    image: "team/t6.jpeg",
+    linkedin: "https://www.linkedin.com/in/gunjal-gupta-a4028825b/",
   },
   {
-    name: "Design Lead",
-    role: "Brand & Experience",
-    image: null,
-    linkedin: null,
+    name: "Chanchal Mali",
+    role: "Non Tech Lead",
+    image: "team/t7.jpeg",
+    linkedin: "https://www.linkedin.com/in/chanchal-mali-23221a329/",
   },
-  { name: "Content Lead", role: "Social & Story", image: null, linkedin: null },
 ];
 
 export const faqs = [
@@ -490,7 +502,7 @@ export const sponsorsData = [
 
 // team
 // AWS Community Day Udaipur '26 — Core Team Members Data
-// Exactly 7 Core Team Members across 2 editorial marquee rows
+// Exactly 7 Core Team Members across 2 editorial marquee rows: 4 in the top row and 3 in the bottom row.
 
 export const coreTeamRow1 = [
   {
@@ -575,104 +587,134 @@ export const coreTeamRow2 = [
 export const volunteersRow1 = [
   {
     id: "vol-01",
-    name: "Priya Sharma",
+    name: "Vipin Pancholi",
     role: "Stage Operations",
     track: "Main Auditorium",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    image: "volunteers/v2.jpeg",
   },
   {
     id: "vol-02",
-    name: "Aman Mathur",
+    name: "Aman Nahar",
     role: "Registration Desk",
     track: "Welcome Hub",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    image: "volunteers/v1.jpeg",
   },
   {
     id: "vol-03",
-    name: "Kavya Singhania",
+    name: "Raghav Gupta",
     role: "Speaker Concierge",
     track: "VIP Lounge",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    image: "volunteers/v3.jpeg",
   },
   {
     id: "vol-04",
     name: "Devendra Paliwal",
     role: "Hands-on Cloud Lab",
     track: "AWS Workshops",
-    image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    image: "",
+  },
+  {
+    id: "vol-05",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
+  },
+  {
+    id: "vol-06",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
   },
 ];
 
 export const volunteersRow2 = [
   {
+    id: "vol-01",
+    name: "Vipin Pancholi",
+    role: "Stage Operations",
+    track: "Main Auditorium",
+    image: "volunteers/v2.jpeg",
+  },
+  {
+    id: "vol-02",
+    name: "Aman Nahar",
+    role: "Registration Desk",
+    track: "Welcome Hub",
+    image: "volunteers/v1.jpeg",
+  },
+  {
+    id: "vol-03",
+    name: "Raghav Gupta",
+    role: "Speaker Concierge",
+    track: "VIP Lounge",
+    image: "volunteers/v3.jpeg",
+  },
+  {
+    id: "vol-04",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
+  },
+  {
     id: "vol-05",
-    name: "Sneha Chundawat",
-    role: "Social Media & Live",
-    track: "Dispatch Studio",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
   },
   {
     id: "vol-06",
-    name: "Rohan Shrimali",
-    role: "Sponsor Pavilion",
-    track: "Expo Hall",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
-  },
-  {
-    id: "vol-07",
-    name: "Meera Solanki",
-    role: "Community Experience",
-    track: "Attendee Hospitality",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
-  },
-  {
-    id: "vol-08",
-    name: "Yashwardhan Sisodia",
-    role: "Track Coordinator",
-    track: "Architect Arena",
-    image:
-      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
   },
 ];
 
 export const volunteersRow3 = [
   {
-    id: "vol-09",
-    name: "Isha Babel",
-    role: "Swag & Gift Hub",
-    track: "Community Central",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    id: "vol-01",
+    name: "Vipin Pancholi",
+    role: "Stage Operations",
+    track: "Main Auditorium",
+    image: "volunteers/v2.jpeg",
   },
   {
-    id: "vol-10",
-    name: "Nikhil Ranawat",
-    role: "AV & Stage Console",
-    track: "Track 1 Console",
-    image:
-      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    id: "vol-02",
+    name: "Aman Nahar",
+    role: "Registration Desk",
+    track: "Welcome Hub",
+    image: "volunteers/v1.jpeg",
   },
   {
-    id: "vol-11",
-    name: "Divya Nagda",
-    role: "Student Ambassador",
-    track: "University Outreach",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    id: "vol-03",
+    name: "Raghav Gupta",
+    role: "Speaker Concierge",
+    track: "VIP Lounge",
+    image: "volunteers/v3.jpeg",
   },
   {
-    id: "vol-12",
-    name: "Rahul Sukhwal",
-    role: "Builder Lab Support",
-    track: "Hands-on Labs",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&h=240&crop=faces&q=80",
+    id: "vol-04",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
+  },
+  {
+    id: "vol-05",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
+  },
+  {
+    id: "vol-06",
+    name: "Devendra Paliwal",
+    role: "Hands-on Cloud Lab",
+    track: "AWS Workshops",
+    image: "",
   },
 ];

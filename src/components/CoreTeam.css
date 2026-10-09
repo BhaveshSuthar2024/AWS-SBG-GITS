@@ -48,25 +48,62 @@
 }
 
 .team-card {
+  position: relative;
   display: grid;
-  grid-template-columns: 118px 1fr;
-  gap: 1rem;
-  text-align: left;
-  padding: 0.85rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   border-radius: 20px;
   border: 1px solid var(--border-primary);
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
   color: inherit;
-  cursor: pointer;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .team-card:hover,
-.team-card:focus-visible {
+.team-card:focus-within {
   transform: translateY(-4px);
   border-color: rgba(var(--accent-primary-rgb), 0.45);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.team-card-profile {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.team-card-profile:focus-visible,
+.team-card-linkedin:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+.team-card-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-right: 0.85rem;
+  border: 1px solid var(--border-primary);
+  border-radius: 50%;
+  color: var(--accent-secondary);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.team-card-linkedin:hover {
+  color: var(--text-primary);
+  border-color: rgba(var(--accent-primary-rgb), 0.45);
+  background: rgba(var(--accent-primary-rgb), 0.12);
 }
 
 .team-card-photo {
@@ -289,6 +326,9 @@
 
 @media (max-width: 560px) {
   .team-card {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .team-card-profile {
     grid-template-columns: 1fr;
   }
   .team-card-photo {

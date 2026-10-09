@@ -3,6 +3,7 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import LinkedInIcon from "../../../components/LinkedInIcon";
 import { speakersData } from "../../communityDayData";
 import {
   speakerVertexShader,
@@ -288,7 +289,7 @@ export default function Speakers({ speakers = speakersData }) {
 
   const totalSpeakers = speakers.length;
   const currentSpeaker = speakers[currentIndex];
-  const usesPlaceholderGallery = speakers.every(
+  const usesPlaceholderGallery = speakers.some(
     (speaker) => speaker.placeholder,
   );
 
@@ -531,7 +532,7 @@ export default function Speakers({ speakers = speakersData }) {
           <div className="community-speakers-vignette absolute inset-y-0 left-0 w-24 md:w-44 bg-gradient-to-r from-[#050505] via-[#050505]/70 to-transparent z-10 pointer-events-none" />
           <div className="community-speakers-vignette absolute inset-y-0 right-0 w-24 md:w-44 bg-gradient-to-l from-[#050505] via-[#050505]/70 to-transparent z-10 pointer-events-none" />
 
-          {/* Three.js Canvas with 3D Gallery Planes */}
+          {/* Use static cards until every speaker has an image for the WebGL gallery. */}
           {usesPlaceholderGallery ? (
             <div
               className="community-speakers-placeholder-gallery"
@@ -540,14 +541,25 @@ export default function Speakers({ speakers = speakersData }) {
               {[currentIndex - 1, currentIndex, currentIndex + 1].map(
                 (index, position) => {
                   const speakerIndex = (index + totalSpeakers) % totalSpeakers;
+                  const speaker = speakers[speakerIndex];
+                  const initials = speaker.name
+                    .split(" ")
+                    .filter(Boolean)
+                    .slice(0, 2)
+                    .map((word) => word[0])
+                    .join("");
                   return (
                     <div
-                      key={`${speakers[speakerIndex].number}-${position}`}
+                      key={`${speaker.number}-${position}`}
                       className={`community-speakers-placeholder-card ${
                         position === 1 ? "is-active" : ""
-                      }`}
+                      }${speaker.placeholder ? " is-placeholder" : ""}`}
                     >
-                      <img src={speakers[speakerIndex].image} alt="" />
+                      {speaker.placeholder ? (
+                        <span>{initials}</span>
+                      ) : (
+                        <img src={speaker.image} alt="" />
+                      )}
                     </div>
                   );
                 },
@@ -632,6 +644,19 @@ export default function Speakers({ speakers = speakersData }) {
               <h3 className="stagger-text text-3xl sm:text-4xl md:text-5xl font-display font-light text-white tracking-tight leading-tight">
                 {currentSpeaker.name}
               </h3>
+              {currentSpeaker.linkedin && (
+                <a
+                  className="community-speaker-linkedin"
+                  href={currentSpeaker.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`View ${currentSpeaker.name}'s LinkedIn profile`}
+                  title={`${currentSpeaker.name} on LinkedIn`}
+                >
+                  <LinkedInIcon size={18} />
+                  <span>LinkedIn</span>
+                </a>
+              )}
 
               <div className="stagger-text text-sm sm:text-base font-normal text-zinc-300 tracking-wide mt-2 flex flex-wrap items-center gap-2">
                 <span>{currentSpeaker.role}</span>

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import LinkedInIcon from '../../../components/LinkedInIcon';
 import { coreTeamRow1, coreTeamRow2 } from '../../communityDayData';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -174,6 +175,21 @@ function InteractiveMarqueeRow({
                 <p className="team-member-role">
                   {member.role}
                 </p>
+                {member.linkedin && (
+                  <a
+                    className="team-member-linkedin"
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View ${member.name}'s LinkedIn profile`}
+                    title={`${member.name} on LinkedIn`}
+                    onPointerDown={(event) => event.stopPropagation()}
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    <LinkedInIcon size={16} />
+                    <span>LinkedIn</span>
+                  </a>
+                )}
               </div>
             </article>
           );

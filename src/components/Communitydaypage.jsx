@@ -33,6 +33,9 @@ import {
   schedule,
   sponsors,
   faqs,
+  volunteersRow1,
+  volunteersRow2,
+  volunteersRow3,
 } from "../utils/communityDayData.js";
 import KonfHubRegistrationWidget from "../utils/KonfHubRegistrationWidget";
 import Speakers from "../utils/CommunityDayPageRedesign/components/Speakers";
@@ -82,26 +85,24 @@ const communityDaySpeakers = [
     : "/assets/speakers/speaker-placeholder.svg",
   placeholder: !speaker.image,
 }));
-const communityCoreTeamRows = [
-  coreTeam.slice(0, 3),
-  coreTeam.slice(3),
-].map((row) =>
-  row.map((member, index) => ({
-    ...member,
-    id: `community-core-${member.name}-${index}`,
-    shortRole: member.role,
-  })),
+const communityCoreTeamRows = [coreTeam.slice(0, 4), coreTeam.slice(4)].map(
+  (row) =>
+    row.map((member, index) => ({
+      ...member,
+      id: `community-core-${member.name}-${index}`,
+      shortRole: member.role,
+    })),
 );
 const communityVolunteerRows = [
-  ["Event volunteer", "Community volunteer", "Event volunteer", "Community volunteer"],
-  ["Community volunteer", "Event volunteer", "Community volunteer", "Event volunteer"],
-  ["Event volunteer", "Community volunteer", "Event volunteer", "Community volunteer"],
-].map((row, rowIndex) =>
-  row.map((name, index) => ({
-    id: `community-volunteer-${rowIndex}-${index}`,
-    name,
-    role: "Names and roles to be announced",
-    image: "/assets/speakers/speaker-placeholder.svg",
+  volunteersRow1,
+  volunteersRow2,
+  volunteersRow3,
+].map((row) =>
+  row.map((volunteer) => ({
+    ...volunteer,
+    image: volunteer.image.startsWith("http")
+      ? volunteer.image
+      : `/${volunteer.image.replace(/^\/+/, "")}`,
   })),
 );
 
@@ -420,7 +421,9 @@ function CommunityDayFooter() {
       <div className="event-footer-bottom">
         <span>AWS Community Day Rajasthan</span>
         <span>© {new Date().getFullYear()} AWS Student Builder Club, GITS</span>
-        <KonfHubRegistrationWidget>Register your interest</KonfHubRegistrationWidget>
+        <KonfHubRegistrationWidget>
+          Register your interest
+        </KonfHubRegistrationWidget>
       </div>
     </footer>
   );
@@ -463,17 +466,6 @@ export default function CommunityDayPage() {
           ease: "power3.out",
         },
       );
-      gsap.to(".hero-architecture", {
-        yPercent: 12,
-        scale: 1.04,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".event-hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
       gsap.to(".about-ghost", {
         xPercent: -11,
         ease: "none",
@@ -612,7 +604,6 @@ export default function CommunityDayPage() {
           <CoreTeam rows={communityCoreTeamRows} />
           <Volunteers
             rows={communityVolunteerRows}
-            summary="VOLUNTEER DETAILS WILL BE ANNOUNCED SOON"
           />
         </div>
 

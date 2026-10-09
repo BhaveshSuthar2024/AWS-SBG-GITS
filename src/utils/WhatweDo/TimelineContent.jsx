@@ -10,14 +10,14 @@ export default function TimelineContent({ category, title, description, buttonLa
       {category && <span className="wwd-category">{category}</span>}
       <h3 className="wwd-item-title">{title}</h3>
       {description && <p className="wwd-description">{description}</p>}
-      {buttonLabel && (
+      {/* {buttonLabel && (
         <button type="button" className="wwd-link-btn" onClick={onButtonClick}>
           <span>{buttonLabel}</span>
           <span className="wwd-link-arrow" aria-hidden="true">
             &rarr;
           </span>
         </button>
-      )}
+      )} */}
     </div>
   );
 }
