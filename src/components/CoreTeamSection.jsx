@@ -142,18 +142,6 @@ export default function CoreTeamSection() {
                         <p>{member.field}</p>
                       </div>
                     </button>
-                    {member.linkedin && (
-                      <a
-                        className="team-card-linkedin"
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`View ${member.name}'s LinkedIn profile`}
-                        title={`${member.name} on LinkedIn`}
-                      >
-                        <LinkedInIcon size={18} />
-                      </a>
-                    )}
                   </article>
                 ))}
               </div>

@@ -50,7 +50,7 @@
 .team-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   border-radius: 20px;
   border: 1px solid var(--border-primary);
@@ -81,29 +81,9 @@
   cursor: pointer;
 }
 
-.team-card-profile:focus-visible,
-.team-card-linkedin:focus-visible {
+.team-card-profile:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 3px;
-}
-
-.team-card-linkedin {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  margin-right: 0.85rem;
-  border: 1px solid var(--border-primary);
-  border-radius: 50%;
-  color: var(--accent-secondary);
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.team-card-linkedin:hover {
-  color: var(--text-primary);
-  border-color: rgba(var(--accent-primary-rgb), 0.45);
-  background: rgba(var(--accent-primary-rgb), 0.12);
 }
 
 .team-card-photo {

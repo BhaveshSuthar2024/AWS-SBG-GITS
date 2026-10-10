@@ -129,6 +129,11 @@
   color: #201910;
   background: var(--home-orange);
   box-shadow: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 .club-app .hero-cta-buttons .btn-premium:hover {
   background: #ffc077;
