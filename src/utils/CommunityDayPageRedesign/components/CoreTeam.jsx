@@ -28,9 +28,7 @@ function InteractiveMarqueeRow({
 }) {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
-
-  rowLabel = "ROW",
-}) {
+  
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   const [copyCount, setCopyCount] = useState(2);
