@@ -21,73 +21,60 @@ function VolunteerMarqueeRow({
   speed = 0.8,
   label = 'Volunteers',
 }) {
+  const containerRef = useRef(null);
   const trackRef = useRef(null);
   const xPos = useRef(0);
   const loopWidth = useRef(0);
-  const rafId = useRef(null);
   const hovered = useRef(false);
 
-function VolunteerMarqueeRow({ items, direction = 'left', speed = 0.95, offset = 0, label = 'Row' }) {
-  const containerRef = useRef(null);
-  const trackRef = useRef(null);
-  const xPos = useRef(offset);
-  const singleSetWidth = useRef(0);
-  const isHovered = useRef(false);
-  const baseSpeed = direction === 'left' ? -speed : speed;
-  const repeatCount = 4;
-
-  const displayItems = [
-    ...items,
-    ...items,
-    ...items,
-    ...items,
-  ];
   const repeatCount = 2;
   const displayItems = [...items, ...items];
+  const baseSpeed = direction === 'left' ? -speed : speed;
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track || items.length === 0) return;
+    const container = containerRef.current;
+    if (!track || !container || items.length === 0) return undefined;
 
     const measure = () => {
       loopWidth.current = track.scrollWidth / repeatCount;
     };
 
     measure();
-    window.addEventListener('resize', measure);
-    measureWidth();
+    const resizeObserver =
+      'ResizeObserver' in window ? new ResizeObserver(measure) : null;
+    resizeObserver?.observe(track);
+    if (!resizeObserver) window.addEventListener('resize', measure);
 
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
-    if (prefersReducedMotion) return undefined;
-    window.addEventListener('resize', measureWidth);
-
     let animationFrame = 0;
     const animate = () => {
       const width = loopWidth.current;
-      const step = hovered.current ? baseSpeed * 0.38 : baseSpeed;
+      if (!prefersReducedMotion) {
+        const step = hovered.current ? baseSpeed * 0.38 : baseSpeed;
+        xPos.current += step;
 
-      xPos.current += step;
+        if (width > 0) {
+          while (xPos.current <= -width) xPos.current += width;
+          while (xPos.current > 0) xPos.current -= width;
+        }
 
-      if (width > 0) {
-        while (xPos.current <= -width) xPos.current += width;
-        while (xPos.current > 0) xPos.current -= width;
+        track.style.transform = `translate3d(${xPos.current}px, 0, 0)`;
       }
-
-      track.style.transform = `translate3d(${xPos.current}px, 0, 0)`;
-      rafId.current = requestAnimationFrame(animate);
       animationFrame = requestAnimationFrame(animate);
     };
 
     const start = () => {
-      if (!animationFrame) animationFrame = requestAnimationFrame(animate);
+      if (!animationFrame && !prefersReducedMotion) {
+        animationFrame = requestAnimationFrame(animate);
+      }
     };
     const stop = () => {
       if (animationFrame) cancelAnimationFrame(animationFrame);
       animationFrame = 0;
     };
-    const container = containerRef.current;
     const observer =
       container && 'IntersectionObserver' in window
         ? new IntersectionObserver(([entry]) => {
@@ -97,12 +84,11 @@ function VolunteerMarqueeRow({ items, direction = 'left', speed = 0.95, offset =
         : null;
 
     if (observer && container) observer.observe(container);
-    else start();
+    else if (!observer) start();
 
     return () => {
       window.removeEventListener('resize', measure);
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-      window.removeEventListener('resize', measureWidth);
+      resizeObserver?.disconnect();
       observer?.disconnect();
       stop();
     };
@@ -110,21 +96,20 @@ function VolunteerMarqueeRow({ items, direction = 'left', speed = 0.95, offset =
 
   return (
     <div
+      ref={containerRef}
       className="liquid-volunteer-marquee"
       aria-label={`${label} marquee`}
-      onMouseEnter={() => (hovered.current = true)}
-      onMouseLeave={() => (hovered.current = false)}
-      ref={containerRef}
-      className="marquee-edge-mask select-none py-2"
-      onMouseEnter={() => { isHovered.current = true; }}
-      onMouseLeave={() => { isHovered.current = false; }}
-      aria-label={`${label} Marquee`}
+      onMouseEnter={() => {
+        hovered.current = true;
+      }}
+      onMouseLeave={() => {
+        hovered.current = false;
+      }}
     >
       <div ref={trackRef} className="liquid-volunteer-track">
         {displayItems.map((volunteer, index) => {
           const duplicate = index >= items.length;
-          const memberNumber =
-            (index % 8) + 1;
+          const memberNumber = (index % 8) + 1;
 
           return (
             <article
@@ -147,30 +132,30 @@ function VolunteerMarqueeRow({ items, direction = 'left', speed = 0.95, offset =
                     draggable="false"
                   />
                 )}
-
                 <div className="liquid-image-shade" />
-
                 <span className="liquid-member-number">
                   {String(memberNumber).padStart(2, '0')}
                 </span>
-
                 <span className="liquid-image-label">
                   AWS COMMUNITY
                 </span>
               </div>
-              {/* Circular Avatar */}
               <div className="volunteer-avatar-wrap">
-                <img
-                  src={volunteer.image}
-                  alt={`${volunteer.name}, AWS Community Volunteer`}
-                  loading="lazy"
-                  decoding="async"
-                  className="volunteer-avatar-img"
-                  draggable="false"
-                />
+                {volunteer.image && (
+                  <img
+                    src={volunteer.image}
+                    alt={
+                      duplicate
+                        ? ''
+                        : `${volunteer.name}, AWS Community Volunteer`
+                    }
+                    loading="lazy"
+                    decoding="async"
+                    className="volunteer-avatar-img"
+                    draggable="false"
+                  />
+                )}
               </div>
-
-              {/* Glass information panel */}
               <div className="liquid-volunteer-info">
                 <div className="liquid-volunteer-kicker">
                   <span className="liquid-status-dot" />

@@ -222,7 +222,7 @@ export const faqs = [
   },
   {
     q: "Is this a paid event?",
-    a: "Yes the Event will be paid the prices are decided to be ₹100 for early bird passes.",
+    a: "No the Event will be completely free just register yourself.",
   },
   {
     q: "Will I get a certificate or swag?",
