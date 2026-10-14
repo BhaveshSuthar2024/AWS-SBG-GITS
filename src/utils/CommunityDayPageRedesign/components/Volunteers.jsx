@@ -157,6 +157,7 @@ function VolunteerMarqueeRow({ items, direction = 'left', speed = 0.95, offset =
                 <span className="liquid-image-label">
                   AWS COMMUNITY
                 </span>
+              </div>
               {/* Circular Avatar */}
               <div className="volunteer-avatar-wrap">
                 <img
