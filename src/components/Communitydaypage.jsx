@@ -81,8 +81,8 @@ const communityDaySpeakers = [
   ...speaker,
   number: String(index + 1).padStart(2, "0"),
   company: "",
-  topic: "Session details will be announced soon.",
-  tags: [],
+  topic: speaker.topic || "Session details will be announced soon.",
+  tags: speaker.tags || [],
   image: speaker.image
     ? `/${speaker.image.replace(/^\/+/, "")}`
     : "/assets/speakers/speaker-placeholder.svg",

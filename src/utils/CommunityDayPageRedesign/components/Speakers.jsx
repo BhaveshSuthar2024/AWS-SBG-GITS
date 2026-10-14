@@ -10,14 +10,14 @@ import React, {
 import gsap from "gsap";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import LinkedInIcon from "../../../components/LinkedInIcon";
-import { speakersData } from "../../communityDayData";
+import { eventSpeakers } from "../../communityDayData";
 const SpeakerGallery = lazy(() => import("./SpeakerGallery"));
 
 // =============================================================================
 // MAIN CINEMATIC SPEAKERS COMPONENT
 // =============================================================================
 
-export default function Speakers({ speakers = speakersData }) {
+export default function Speakers({ speakers = eventSpeakers }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [targetIndex, setTargetIndex] = useState(0);
   const containerRef = useRef(null);
@@ -48,96 +48,99 @@ export default function Speakers({ speakers = speakersData }) {
   // ---------------------------------------------------------------------------
   // TRANSITION CONTROLLER (GSAP + GLSL SHADER PROGRESS)
   // ---------------------------------------------------------------------------
-  const goToSlide = useCallback((newIndex, direction = 1) => {
-    if (isAnimating.current || newIndex === currentIndex) return;
+  const goToSlide = useCallback(
+    (newIndex, direction = 1) => {
+      if (isAnimating.current || newIndex === currentIndex) return;
 
-    // Check prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+      // Check prefers-reduced-motion
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-    isAnimating.current = true;
-    directionRef.current = direction;
-    setTargetIndex(newIndex);
-
-    // Reset drag displacement
-    dragRef.current = 0.0;
-
-    if (prefersReducedMotion) {
-      setCurrentIndex(newIndex);
+      isAnimating.current = true;
+      directionRef.current = direction;
       setTargetIndex(newIndex);
-      isAnimating.current = false;
-      return;
-    }
 
-    const elementsToExit = textContainerRef.current
-      ? textContainerRef.current.querySelectorAll(".stagger-text")
-      : [];
+      // Reset drag displacement
+      dragRef.current = 0.0;
 
-    const exitDistance = direction > 0 ? -30 : 30;
-    const transitionDuration = usesPlaceholderGallery ? 0.38 : 0.85;
-    const timeline = gsap.timeline({
-      onComplete: () => {
+      if (prefersReducedMotion) {
         setCurrentIndex(newIndex);
         setTargetIndex(newIndex);
-        progressRef.current = 0;
         isAnimating.current = false;
+        return;
+      }
 
-        const elementsToEnter = textContainerRef.current
-          ? textContainerRef.current.querySelectorAll(".stagger-text")
-          : [];
+      const elementsToExit = textContainerRef.current
+        ? textContainerRef.current.querySelectorAll(".stagger-text")
+        : [];
 
-        gsap.fromTo(
-          elementsToEnter,
-          { y: direction > 0 ? 18 : -18, opacity: 0 },
+      const exitDistance = direction > 0 ? -30 : 30;
+      const transitionDuration = usesPlaceholderGallery ? 0.38 : 0.85;
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          setCurrentIndex(newIndex);
+          setTargetIndex(newIndex);
+          progressRef.current = 0;
+          isAnimating.current = false;
+
+          const elementsToEnter = textContainerRef.current
+            ? textContainerRef.current.querySelectorAll(".stagger-text")
+            : [];
+
+          gsap.fromTo(
+            elementsToEnter,
+            { y: direction > 0 ? 18 : -18, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.42,
+              stagger: 0.05,
+              ease: "power2.out",
+            },
+          );
+        },
+      });
+
+      if (galleryRef.current) {
+        timeline.to(
+          galleryRef.current,
           {
-            y: 0,
-            opacity: 1,
-            duration: 0.42,
-            stagger: 0.05,
-            ease: "power2.out",
+            x: exitDistance,
+            scale: 0.94,
+            opacity: 0,
+            filter: "blur(8px)",
+            duration: transitionDuration,
+            ease: "power2.in",
           },
+          0,
         );
-      },
-    });
+      }
 
-    if (galleryRef.current) {
       timeline.to(
-        galleryRef.current,
+        elementsToExit,
         {
-          x: exitDistance,
-          scale: 0.94,
+          y: direction > 0 ? -18 : 18,
           opacity: 0,
-          filter: "blur(8px)",
-          duration: transitionDuration,
+          duration: 0.22,
+          stagger: 0.03,
           ease: "power2.in",
         },
         0,
       );
-    }
-
-    timeline.to(
-      elementsToExit,
-      {
-        y: direction > 0 ? -18 : 18,
-        opacity: 0,
-        duration: 0.22,
-        stagger: 0.03,
-        ease: "power2.in",
-      },
-      0,
-    );
-    timeline.fromTo(
-      progressRef,
-      { current: 0 },
-      {
-        current: 1,
-        duration: transitionDuration,
-        ease: "power3.inOut",
-      },
-      0,
-    );
-  }, [currentIndex, usesPlaceholderGallery]);
+      timeline.fromTo(
+        progressRef,
+        { current: 0 },
+        {
+          current: 1,
+          duration: transitionDuration,
+          ease: "power3.inOut",
+        },
+        0,
+      );
+    },
+    [currentIndex, usesPlaceholderGallery],
+  );
 
   const handleNext = useCallback(() => {
     const next = (currentIndex + 1) % totalSpeakers;
@@ -182,9 +185,7 @@ export default function Speakers({ speakers = speakersData }) {
       hasChangedSlideRef.current = true;
       return;
     }
-    if (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       gsap.set(gallery, {
         x: 0,
         scale: 1,
