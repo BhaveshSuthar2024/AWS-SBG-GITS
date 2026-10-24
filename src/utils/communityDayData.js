@@ -73,42 +73,44 @@ export const eventSpeakers = [
     role: "CEO of Turf Dev Pvt Ltd",
     image: "/speakers/s1.jpeg",
     linkedin: "https://www.linkedin.com/in/pancholi-aditya/",
-    topic: "Your Developers Don’t Need Kubernetes - They Need a Platform",
+    topic: "Your Developers Don’t Need Kubernetes - They Need a Platform.",
   },
   {
     name: "Harsh Soni",
     role: "SDE-3 at Tide",
     image: "/speakers/s6.png",
     linkedin: "https://www.linkedin.com/in/cscipher/",
-    topic: "Scaling Flutter with AWS: The Architecture Behind Server-Driven UI",
+    topic: "Scaling server driven UI on apps with AWS.",
   },
   {
     name: "Ashwin Sharma",
     role: "AWS Cloud and Devops Engineer at Eternal Web Pvt Ltd",
     image: "/speakers/s2.jpeg",
     linkedin: "https://www.linkedin.com/in/iamashwins/",
-    topic: "Practical Session on FinOps.",
+    topic: "Costly AWS Mistakes: A FinOps Survival Guide for Engineers.",
   },
   {
     name: "Hardik maheshwari",
     role: "Cloud & Infrastructure Engineer at Dhinex",
     image: "/speakers/s3.jpeg",
     linkedin: "https://www.linkedin.com/in/hardikmaheshwarii/",
-    topic: "AWS with jenkins",
+    topic:
+      "Ingress is not your Network Architecture : The rise of gateway api And AWS VPC Lattice.",
   },
   {
     name: "Lakhan Dadhich",
     role: "Devops Engineer at Dhinex",
     image: "/speakers/s4.webp",
     linkedin: "https://www.linkedin.com/in/lakhan-dadhich-77a801230/",
-    topic: "Serverless deployments.",
+    topic:
+      "Ingress is not your Network Architecture : The rise of gateway api And AWS VPC Lattice.",
   },
   {
     name: "Abhishek Joshi",
     role: "DevOps Engineer at ScaleCapacity",
     image: "/speakers/s5.png",
     linkedin: "https://www.linkedin.com/in/abhishek-joshi-160b3b228/",
-    topic: "Access Denied: Who Controls Your AI Agent on AWS?",
+    topic: "Access Denied: Who Decides What Your AI Agent Can Do on AWS?",
   },
 ];
 
