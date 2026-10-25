@@ -116,70 +116,97 @@ export const eventSpeakers = [
 
 export const schedule = [
   {
-    time: "10:00 – 10:15",
-    title: "Welcome Note",
-    desc: "Opening by AWS Student Builder Club, GITS.",
+    time: "10:00 – 11:00",
+    title: "Registration & Community Check-in",
+    desc: "Check in, meet fellow builders, and get settled before the day's sessions begin.",
+    type: "registration",
+  },
+  {
+    time: "11:00 – 11:15",
+    title: "Welcome & Opening Remarks",
+    desc: "An introduction to AWS Student Builder Club, GITS, and the community-focused program for the day.",
     type: "talk",
   },
   {
-    time: "10:15 – 11:15",
-    title: "Keynote",
-    desc: "The student path into cloud, community, and real-world AWS.",
+    time: "11:15 – 11:30",
+    title: "Address from the GITS Director",
+    desc: "A leadership address on learning, building, and growing through the cloud community.",
     type: "talk",
   },
   {
-    time: "11:15 – 11:35",
-    title: "Technical Talks + Quiz Round 1",
-    desc: "Architecture, IAM, and building on AWS.",
+    time: "11:30 – 12:00",
+    title:
+      "Aditya Pancholi: Your Developers Don’t Need Kubernetes—They Need a Platform",
+    desc: "Explore how a developer platform can simplify the developer experience and let teams focus on building.",
+    type: "talk",
+  },
+  {
+    time: "12:00 – 12:30",
+    title: "Abhishek Joshi: Who Decides What Your AI Agent Can Do on AWS?",
+    desc: "A look at the permissions and guardrails that determine what AI agents can access and do in AWS.",
+    type: "talk",
+  },
+  {
+    time: "12:30 – 1:00",
+    title: "Community Quiz",
+    desc: "Take part in a fun knowledge challenge with fellow attendees.",
     type: "quiz",
   },
   {
-    time: "11:40 – 12:15",
-    title: "Panel: Campus to Cloud",
-    desc: "Mentors and builders on careers, certifications, and first jobs.",
-    type: "panel",
-  },
-  {
-    time: "12:20 – 13:00",
-    title: "DevOps & AI Track",
-    desc: "From pipelines to Bedrock — practical sessions.",
+    time: "1:00 – 1:30",
+    title: "Ashwin Sharma: Costly AWS Mistakes—A FinOps Survival Guide",
+    desc: "Practical lessons on common AWS cost pitfalls and making cost-aware choices as an engineer.",
     type: "talk",
   },
   {
-    time: "13:00 – 14:00",
+    time: "1:30 – 2:30",
     title: "Lunch & Networking",
-    desc: "Meet speakers, sponsors, and fellow builders.",
+    desc: "Enjoy lunch and connect with speakers and fellow attendees.",
     type: "break",
   },
   {
-    time: "14:00 – 15:10",
-    title: "Labs & Architecture",
-    desc: "Hands-on labs and cost-aware design.",
+    time: "2:45 – 3:15",
+    title: "Harsh Soni: Scaling Server-Driven UI on Apps with AWS",
+    desc: "Explore approaches to scaling server-driven user interfaces in mobile applications with AWS.",
     type: "talk",
   },
   {
-    time: "15:15 – 15:50",
-    title: "Closing Panel",
-    desc: "Engineering in the age of AI, from Udaipur outward.",
-    type: "panel",
+    time: "3:15 – 3:45",
+    title:
+      "Lakhan Dadhich & Hardik Maheshwari: Beyond Ingress with Gateway API and AWS VPC Lattice",
+    desc: "Explore why ingress alone is not a complete network architecture, and learn about Gateway API and AWS VPC Lattice.",
+    type: "talk",
   },
   {
-    time: "15:50 – 16:00",
-    title: "Closing Ceremony",
-    desc: "Awards, contest winners, swag, and group photo.",
+    time: "3:45 – 4:15",
+    title: "Community Quiz",
+    desc: "Put the day's ideas to the test in a second knowledge challenge.",
+    type: "quiz",
+  },
+  {
+    time: "4:15 – 4:45",
+    title: "Awards & Community Recognition",
+    desc: "Celebrate contest winners and recognize the volunteers, speakers, and contributors who made the event possible.",
     type: "ceremony",
+  },
+  {
+    time: "4:45 – 5:00",
+    title: "High Tea & Swag Distribution",
+    desc: "Wrap up the day over high tea and collect event swag.",
+    type: "break",
   },
 ];
 
 export const sponsors = {
-  platinum: [{ name: "AWS" }],
-  gold: [{ name: "Sponsor TBA" }],
-  community: [
-    { name: "AWS Student Builder Club, GITS" },
-    // { name: "Geetanjali Institute of Technical Studies" },
-    { name: "Community Partner TBA" },
-    { name: "Community Partner TBA" },
+  platinum: [],
+  gold: [
+    {
+      name: "Geetanjali Institute of Technical Studies",
+      logo: null,
+    },
   ],
+  silver: [{ name: "TURF DEV", logo: null }],
+  community: [],
 };
 
 export const coreTeam = [

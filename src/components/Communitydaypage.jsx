@@ -488,9 +488,14 @@ export default function CommunityDayPage() {
   const sponsorItems = [
     ["PLATINUM", sponsors.platinum],
     ["GOLD", sponsors.gold],
+    ["SILVER", sponsors.silver],
     ["COMMUNITY PARTNERS", sponsors.community],
   ].flatMap(([group, list]) =>
-    list.map((s, j) => ({ group, sponsor: s, key: `${group}-${s.name}-${j}` })),
+    list?.map((s, j) => ({
+      group,
+      sponsor: s,
+      key: `${group}-${s.name}-${j}`,
+    })),
   );
 
   return (
@@ -727,19 +732,36 @@ export default function CommunityDayPage() {
               tabIndex={0}
             >
               <div className="sponsor-marquee-track">
-                {[0, 1].flatMap((copy) =>
-                  sponsorItems.map(({ group, sponsor, key }) => (
-                    <div
-                      className="sponsor-wordmark"
-                      key={`${copy}-${key}`}
-                      aria-hidden={copy === 1}
-                    >
-                      <span className="sponsor-category">{group}</span>
-                      <strong>{sponsor.name}</strong>
-                      <ArrowRight size={16} />
-                    </div>
-                  )),
-                )}
+                {[0, 1].map((copy) => (
+                  <div
+                    className="sponsor-marquee-group"
+                    key={`sponsors-${copy}`}
+                    aria-hidden={copy === 1}
+                  >
+                    {Array.from({ length: 12 }, (_, repetition) =>
+                      sponsorItems.map(({ group, sponsor, key }) => (
+                        <div
+                          className="sponsor-wordmark"
+                          key={`${repetition}-${key}`}
+                        >
+                          <span className="sponsor-category">{group}</span>
+                          <strong>
+                            {sponsor.logo && (
+                              <img
+                                className="sponsor-logo"
+                                src={sponsor.logo}
+                                alt={`${sponsor.name} logo`}
+                                loading="lazy"
+                              />
+                            )}
+                            {sponsor.name}
+                          </strong>
+                          <ArrowRight size={16} />
+                        </div>
+                      )),
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

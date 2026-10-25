@@ -1192,10 +1192,19 @@
   letter-spacing: 0.1em;
 }
 .sponsor-wordmark strong {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font:
     600 clamp(14px, 1.5vw, 20px) Manrope,
     sans-serif;
   letter-spacing: -0.03em;
+}
+.sponsor-wordmark .sponsor-logo {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 .sponsor-wordmark svg {
   color: var(--rust);
@@ -2288,6 +2297,11 @@
   display: flex;
   width: max-content;
   animation: sponsor-marquee-left 34s linear infinite;
+}
+.cd-page .sponsor-marquee-group {
+  display: flex;
+  flex: 0 0 auto;
+  width: max-content;
 }
 .cd-page .sponsor-marquee:hover .sponsor-marquee-track,
 .cd-page .sponsor-marquee:focus-within .sponsor-marquee-track {
