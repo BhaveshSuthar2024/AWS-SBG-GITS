@@ -154,8 +154,9 @@ export const schedule = [
   },
   {
     time: "1:00 – 1:30",
-    title: "Ashwin Sharma: Costly AWS Mistakes—A FinOps Survival Guide",
-    desc: "Practical lessons on common AWS cost pitfalls and making cost-aware choices as an engineer.",
+    title:
+      "Lakhan Dadhich & Hardik Maheshwari: Beyond Ingress with Gateway API and AWS VPC Lattice",
+    desc: "Explore why ingress alone is not a complete network architecture, and learn about Gateway API and AWS VPC Lattice.",
     type: "talk",
   },
   {
@@ -172,9 +173,8 @@ export const schedule = [
   },
   {
     time: "3:15 – 3:45",
-    title:
-      "Lakhan Dadhich & Hardik Maheshwari: Beyond Ingress with Gateway API and AWS VPC Lattice",
-    desc: "Explore why ingress alone is not a complete network architecture, and learn about Gateway API and AWS VPC Lattice.",
+    title: "Ashwin Sharma: Costly AWS Mistakes—A FinOps Survival Guide",
+    desc: "Practical lessons on common AWS cost pitfalls and making cost-aware choices as an engineer.",
     type: "talk",
   },
   {
